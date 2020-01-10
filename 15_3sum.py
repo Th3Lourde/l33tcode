@@ -2,8 +2,56 @@
 
 class Solution:
 
-    # smart-solution
+
+    '''
+    Ok so we are using the goalpost approach
+    first term can't be a repeat
+    second term can't be a repeat
+    if first, second can't be a repeat, then neither can third :)
+    '''
+
     def threeSum(self, nums):
+        ans = []
+        nums.sort()
+
+        for i in range(len(nums)):
+
+            # Also navigate to avoid duplicates
+
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+
+            target = nums[i]*(-1)
+
+            s,e = i+1, len(nums)-1
+
+            while s < e:
+
+                if nums[s]+nums[e] == target:
+                    ans.append([nums[i], nums[s], nums[e]])
+
+                    '''
+                    [1,1,1,1,2,2,2,3]
+                    '''
+
+                    while nums[s] == nums[s+1] and s<e:
+                        s += 1
+
+                    s += 1
+
+
+                elif nums[s]+nums[e] > target:
+                    e -= 1
+
+                elif nums[s]+nums[e] < target:
+                    s += 1
+
+        return ans
+
+
+
+    # smart-solution
+    def threeSum_2(self, nums):
         ans = []
         history = {}
 
