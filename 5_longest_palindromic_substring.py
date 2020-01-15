@@ -1,8 +1,6 @@
 
-
-
 class Solution:
-    
+
     # This works, is brute-force solution
     def longestPalindrome(self, s):
         if s == "":
