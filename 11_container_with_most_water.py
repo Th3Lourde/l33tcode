@@ -30,7 +30,6 @@ class Solution:
                 elif l+2 == r:
                     l += 1
 
-                        # elif l+3 == r:
                 elif r-l >= 3:
                     if height[l+1] > height[r-1]:
                         l += 1
