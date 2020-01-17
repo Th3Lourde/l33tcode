@@ -1,13 +1,25 @@
 
+'''
+Still working on problem
+'''
 
 class Solution:
     def maxSumDivThree(self, nums):
         def getTarget(currentElement):
             tmp =  currentElement//3
             if tmp*3 < currentElement:
-                return currentElement - (tmp+1)*3
+                return (tmp+1)*3 - currentElement
             elif tmp*3 > currentElement:
-                return currentElement - tmp*3
+                return tmp*3 - currentElement
+
+
+        def constructTarget(target, keys, d):
+            '''
+            So keys are already sorted in descending order
+            search for the largest element < target
+
+
+            '''
 
 
 
@@ -29,6 +41,7 @@ class Solution:
 
         i = 0
         while True:
+            newSum = []
 
             if i > len(keys)-1:
                 break
@@ -36,14 +49,29 @@ class Solution:
             currentElement = keys[i]
 
             if currentElement%3 == 0:
-                ans.append(currentElement)
+                # ans.append(currentElement)
+                newSum.append(currentElement)
                 print("{} is divisible by three".format(currentElement))
 
             elif currentElement%3 != 0:
 
                 target = getTarget(currentElement)
 
+                # maybe update dictionary about currentElement here?
                 print("target for {} is {}".format(currentElement, target))
+
+                if target == 1:
+                    try:
+                        if d[1] > 0:
+                            newSum.append(1)
+                            # update frequency of 1
+
+                    except:
+                        print("target does not exist in dict")
+
+                elif target > 1:
+                    # try to construct target using keys
+                    constructTarget(target, keys, d)
 
             # define end condition
 
@@ -57,6 +85,8 @@ class Solution:
 
 
         print("Done :)")
+
+        ans += newSum
 
 
 if __name__ == '__main__':
