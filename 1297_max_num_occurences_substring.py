@@ -30,23 +30,18 @@ class Solution:
 
             return unique
 
-        subStrings = []
         subFreq = {}
-        # find all substrings of min size with
+        # Find all substrings of min size with
         # valid num characters
         for i in range(len(s)-minSize+1):
             subStr = s[i:i+minSize]
-            # print("subStr: {}".format(subStr))
-            if subStr not in subStrings:
-                # check to see # of unique chars
-                if getUniqueChars(subStr) <= maxLetters:
-                    subStrings.append(subStr)
-                    subFreq[subStr] = 1
 
-            elif subStr in subStrings:
+            try:
                 subFreq[subStr] += 1
 
-        print(subFreq)
+            except:
+                if getUniqueChars(subStr) <= maxLetters:
+                    subFreq[subStr] = 1
 
         if subFreq == {}:
             return 0
