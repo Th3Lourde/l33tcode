@@ -7,8 +7,8 @@ class Solution:
         for i in range(1, len(nums)+1):
             base += i
 
-        print("base: {} actual: {}".format(base, sum(nums)))
-        print("len(nums)-diff = {}".format(len(nums)-abs(base-sum(nums))))
+        # print("base: {} actual: {}".format(base, sum(nums)))
+        # print("len(nums)-diff = {}".format(len(nums)-abs(base-sum(nums))))
 
         return len(nums)-abs(base-sum(nums))
 
