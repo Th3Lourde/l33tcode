@@ -1,64 +1,66 @@
-'''
-Count the number of prime numbers less than a non-negative number
-
-these number theory questions are fun :)
-
-count up to the number. Every time you encounter a prime,
-store it. If you are not sure if the number is prime,
-check if it is divisible by the primes you have encountered
-so far. If it is not, it is a prime
-'''
 
 class Solution:
-
     def countPrimes(self, n):
-        isPrime = [0,0] + [True]*(n-2)
+        '''
+        For all elements that are less than n,
+        count the number of elements that are
+        prime
 
-        i = 2
-        while i*i < n:
-            if (not isPrime[i]):
-                for j in range(i*i, n, i):
-                    isPrime[j] = False
-            i += 1
+        The trick here is trying to figure out
+        whether or not a number is prime. We could
+        store/generate primes less than that number,
+        (since a number is prime if (number%2) ^ (number%(any prime)) != 0)
 
-        count = 0
-        for i in range(2, n):
-            if (isPrime[i]):
-                count += 1
+        where we would just iterate through all of the primes, however that
+        would take extra time, and it's not obvious that it would be faster
+        to do things this way than to just brute-force by checking all odd numbers
 
-        return count
+        According to the internet, there are a couple of ways of checking to see
+        if a number is prime:
+            * Is the number even?
+            * Is the number divisible by a prime smaller than it?
 
-        # this is an approximation, not the actual value :/
-    def countPrimes_2(self, n):
-        import math
+        Here is my approach:
 
-        return int(n/math.log1p(n))
+        loop through all numbers < n.
+        record all primes as they are seen.
+        if a number is not even, nor divisible by a previously seen prime, it is prime
 
-    # too slow :/
-    def countPrimes_1(self, n):
+        All of the solutions use number theory in order to solve it :P
 
-        if n <= 1:
-            return 0
+        My solution works, however is not fast enough, due to me not implementing number theory.
+        Darn.
+        But hey,
+        Good news is that I am coming up with solutions to pretty much all of the problems. Just improve
+        my ability to implement and we are good to go :)
+        '''
+        primes = 0
+        is_prime = False
+
+        seenPrimes = set()
+
+        if n > 2:
+            primes += 1
+
+        for num in range(3, n, 2):
+            is_prime =  True
+
+            # we are skipping all even numbers for obvious reasons
+
+            # loop through all previously seen primes, check if num%prime
+            for prime in seenPrimes:
+                if num%prime == 0:
+                    is_prime = False
+                    break
+
+            if is_prime:
+                primes += 1
+                seenPrimes.add(num)
 
 
-        primes = [2]
-
-        for i in range(3, n):
-            isPrime = True
-
-            for prime in primes:
-                if i % prime == 0:
-                    isPrime = False
-
-            if isPrime:
-                primes.append(i)
-
-        return len(primes)
-
-
+        return primes
 
 
 if __name__ == '__main__':
     s = Solution()
-
-    print(s.countPrimes(10))
+    print(s.countPrimes(499979))
