@@ -1,6 +1,91 @@
 
 class Solution:
-    def countPrimes(self, n):
+
+    def countPrimes(self, n): # Slight alteration of previous algo
+        def prime(n):
+            if n <= 1:
+                return False
+
+            i = 2
+            while i*i < n: # while i^2 < n, check for prime
+                if n%i == 0: return False
+                i += 1
+
+            return True
+
+        isPrime = [False, False] + [True]*(n-2)
+
+        for i in range(2, n):
+            if isPrime[i]:
+                for j in range(i+i, n, i):
+                    isPrime[j] = False
+
+        counter = 0
+        for num in isPrime:
+            if num:
+                counter += 1
+
+        return counter
+
+
+    def countPrimes_2(self, n):
+        '''
+        Strat: Implement some number-theory algorithm
+        that efficiently reveals the number of primes
+        that are less than a given prime.
+
+        1) Construct a list to show all possible primes,
+        initialize them as being true
+
+        2) march through the list. Every time you find a number
+        that is prime, make all factors not prime.
+
+        3) March through the list again and count the number
+        of prime numbers
+        '''
+        def prime(n):
+            if n <= 1:
+                return False
+
+            i = 2
+            while i*i < n: # while i^2 < n, check for prime
+                if n%i == 0: return False
+                i += 1
+
+            return True
+
+
+                  # 0, 1 not prime
+        isPrime = [False, False] + [True]*(n-2)
+
+        for i in range(n):
+            # find number that is prime
+            # if we know the number is not
+            # prime, skip it.
+            if isPrime[i]:
+                if prime(i):
+                    # find all multiples of that prime number
+                    # and set them equal to false (not prime)
+                    for j in range(i+i, n, i):
+                        isPrime[j] = False
+
+
+
+        counter = 0
+        for num in isPrime:
+            if num:
+                counter += 1
+
+        return counter
+
+
+
+
+
+
+
+
+    def countPrimes_1(self, n):
         '''
         For all elements that are less than n,
         count the number of elements that are
@@ -63,4 +148,5 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.countPrimes(499979))
+    # print(s.countPrimes(499979))
+    print(s.countPrimes(10))
