@@ -21,7 +21,28 @@ Assume we have palindrome algo implemented
 
 
 class Solution:
+
     def countSubstrings(self, s):
+
+        def getAdjPali(l,r,s):
+            t = 0
+            while (l >= 0 and r < len(s)) and (s[l] == s[r]):
+                t += 1
+                l -= 1
+                r += 1
+            return t
+
+        ans = len(s)
+        for i in range(len(s)):
+            ans += getAdjPali(i,i+1,s)
+            ans += getAdjPali(i-1,i+1,s)
+
+        return ans
+
+
+
+    # Works, is slow
+    def countSubstrings_1(self, s):
 
         def isPalindrome(word):
 
@@ -64,4 +85,4 @@ class Solution:
 if __name__ == '__main__':
     s = Solution()
 
-    print(s.countSubstrings("abc"))
+    print(s.countSubstrings("aaa"))
