@@ -8,7 +8,51 @@ class Node:
         return "{} {}".format(self.val, self.next)
 
 class Solution:
+
     def copyRandomList(self, head):
+
+        if not head:
+            return None
+
+        d = {}
+        count = 0
+        node = head
+        ans = Node(head.val, None, None)
+        d[count] = ans
+        count += 1
+        tmp = node
+        node = node.next
+
+        while node:
+            ans.next = Node(node.val, None, None)
+            d[tmp] = ans
+            count += 1
+            node = node.next
+            ans = ans.next
+            tmp = tmp.next
+
+        d[tmp] = ans
+
+        # Have copied LL (not yet random index)
+
+        ans = d[0]
+        node = head
+
+        while ans:
+            try:
+                ans.random = d[node.random]
+            except:
+                ans.random = None
+
+            node = head
+            ans = ans.next
+            node = node.next
+
+
+        return d[0]
+
+    # Guess I already did this...
+    def copyRandomList_1(self, head):
 
         if head == None:
             return head
@@ -26,7 +70,7 @@ class Solution:
             tmp = tmp.next
 
         tmp2.next = None
-            
+
 
         print(head)
         print(head2)
@@ -35,7 +79,7 @@ class Solution:
         Now we do the random
         '''
 
-            
+
 
 if __name__ == "__main__":
     s = Solution()
@@ -50,12 +94,3 @@ if __name__ == "__main__":
     b.next = c
 
     s.copyRandomList(h)
-
-
-
-
-
-
-
-
-
