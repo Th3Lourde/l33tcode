@@ -12,13 +12,104 @@ Log:
     Still not fast enough. I think that this is due to my recursion calls. Hope to make
     progress on that tomorrow
 
+    3/27/20
+    Today I am going to re-write the code so there is no recursion.
+
 
 '''
 
-
-
-
 class Solution:
+
+    def search(self, nums, target): # This works
+
+        if len(nums) == 0:
+            return -1
+
+        elif len(nums) == 1 and nums[0] != target:
+            return -1
+
+        elif len(nums) == 1 and nums[0] == target:
+            return 0
+
+
+
+        subList = nums
+        s = 0
+        e = len(nums)-1
+
+        # Check that the target isn't equal to the endpoints
+
+        while True:
+
+            # Check that the outer bounds of the
+            # interval do not equal the target
+
+            if nums[s] == target:
+                return s
+
+            elif nums[e] == target:
+                return e
+
+            if (nums[s] < nums[e]) and (target >= nums[s] and target <= nums[e]):
+                # Perform a search for the target
+                # return target or -1
+                while True:
+                    if nums[s] == target:
+                        return s
+
+                    if nums[e] == target:
+                        return e
+
+                    if e-s == 1:
+                        return -1
+
+                    middle = int((e-s)/2) + s
+
+                    if nums[middle] == target:
+                        return middle
+
+                    if nums[middle] > target:
+                        e = middle
+
+                    elif nums[middle] < target:
+                        s = middle
+
+            elif nums[s] > nums[e]:
+                # Split the subList in half,
+                # continue with the "correct" half
+                middle = int((e-s)/2) + s
+                # Check if middle == target
+
+                if middle != s and middle != e:
+
+                    if nums[s] < nums[middle] and not(nums[middle] < nums[e]):
+                        # left sublist is sorted
+                        if target <= nums[middle] and target >= nums[s]:
+                            # target is in [nums[s], nums[middle]]
+                            e = middle
+
+                        else:
+                            s = middle
+
+                    elif not(nums[s] < nums[middle]) and nums[middle] < nums[e]:
+                        # right sublist is sorted
+                        if target <= nums[e] and target >= nums[middle]:
+                            # target is in [nums[middle], nums[e]]
+                            s = middle
+
+                        else:
+                            e = middle
+
+                else:
+                    return -1
+
+            else:
+                return -1
+
+
+
+
+class Solution1:
 
     def recurse(self, nums, start, end, target):
         t = target
@@ -69,9 +160,9 @@ class Solution:
 
             if middle != start and middle != end:
 
-                # Find which of the sublists are ordered
+                # find which of the sublists are ordered
                 if nums[start] < nums[middle] and nums[middle] < nums[end]:
-                    # Pivot is zero, check both
+                    # pivot is zero, check both
                     if t <= nums[middle] and t >= nums[start]:
                         return self.recurse(nums, start, middle, target)
 
@@ -79,7 +170,7 @@ class Solution:
                         return self.recurse(nums, middle, end, target)
 
                 elif nums[start] < nums[middle] and not(nums[middle] < nums[end]):
-                    # Left sublist is sorted
+                    # left sublist is sorted
                     if t <= nums[middle] and t >= nums[start]:
                         # target is in [nums[start], nums[middle]]
                         return self.recurse(nums, start, middle, target)
@@ -88,7 +179,7 @@ class Solution:
                         return self.recurse(nums, middle, end, target)
 
                 elif not(nums[start] < nums[middle]) and nums[middle] < nums[end]:
-                    # Right sublist is sorted
+                    # right sublist is sorted
                     if t <= nums[end] and t >= nums[middle]:
                         # target is in [nums[middle], nums[end]]
                         return self.recurse(nums, middle, end, target)
