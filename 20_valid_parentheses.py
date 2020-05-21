@@ -1,4 +1,82 @@
 
+
+class Solution:
+    def isValid(self, s):
+        stack = []
+
+        swap = {")":"(", "]":"[", "}":"{"}
+
+        for e in s:
+            if e == "(" or e == "[" or e == "{":
+                stack.append(e)
+
+            elif e == ")" or e == "]" or e == "}":
+                if len(stack) == 0:
+                    return False
+
+                if stack.pop() != swap[e]:
+                    return False
+
+        if len(stack) != 0:
+            return False
+
+        return True
+
+
+if __name__ == '__main__':
+    s = Solution()
+
+    testCases = [
+
+        # Empty string works
+        ["", True],
+
+        ["()", True],
+        ["(", False],
+        [")", False],
+
+        ["()", True],
+        ["())", False],
+        ["(())", True],
+        ["(()", False],
+
+        ["[]", True],
+        ["[", False],
+        ["]", False],
+
+        ["[]", True],
+        ["[]]", False],
+        ["[[]]", True],
+        ["[[]", False],
+
+        ["{}", True],
+        ["{", False],
+        ["}", False],
+
+        ["{}", True],
+        ["{}}", False],
+        ["{{}}", True],
+        ["{{}", False],
+
+
+        ["{(]", False],
+        ["{()]", False],
+        ["{()}]", False],
+        ["[{()}]", True],
+
+        ["(*)", True],
+        ["{(*)}", True],
+        ["[{(*)}]", True],
+        ["[{(*))}]", False],
+
+    ]
+
+    for tc in testCases:
+        assert s.isValid(tc[0]) == tc[1], "[For {}]: {} != {}".format(tc[0], s.isValid(tc[0]), tc[1])
+
+    print("[passed all test cases]")
+
+
 def isValid(s:str) -> bool:
     # Assuming can't contain spaces
     if s == "":
@@ -39,6 +117,6 @@ def isValid(s:str) -> bool:
 
 
 
-if __name__ == "__main__":
-    resp = isValid("[")
-    print(resp)
+# if __name__ == "__main__":
+#     resp = isValid("[")
+#     print(resp)

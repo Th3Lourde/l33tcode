@@ -118,8 +118,66 @@ class BST:
 
 class Solution:
 
+    def dailyTemperatures(self, T): # understand it, however had to look it up.
+        ans = [0]*len(T)
+        stack = []
+
+        for i in range(len(T)-1, -1, -1):
+            while stack and T[i] > T[stack[-1]]:
+                stack.pop()
+
+            if stack:
+                ans[i] = stack[-1]-i
+
+            stack.append(i)
+
+        return ans
+
+
+    def dailyTemperatures_5(self, T): # works, is slow
+        temps = [101]*101
+        ans = [0]*len(T)
+
+        for i in range(len(T)-1, -1, -1):
+            replacement = len(T)
+            temps[T[i]] = i
+
+            for largerTemp in range(T[i]+1, 101):
+                replacement = min(replacement, temps[largerTemp])
+
+            if replacement < len(T):
+                ans[i] = replacement - i
+
+        return ans
+
+    def dailyTemperatures_4(self, T): #TLE
+        d = {key: [] for key in range(30,101)}
+
+
+        for i in range(len(T)):
+            d[T[i]].append(i)
+
+        ans = []
+
+        for t in range(len(T)):
+            ans.append(0)
+
+            higherTemp = len(T)
+
+            for i in range(T[t]+1, 101):
+                if d[i] != []:
+                    for index in d[i]:
+                        if index > t:
+                            higherTemp = min(higherTemp, index)
+
+            if higherTemp != len(T):
+                ans[-1] = higherTemp-t
+
+        return ans
+
+
     # supplied solution
-    def dailyTemperatures(self, T):
+    def dailyTemperatures_3(self, T):
         '''
         create list of size 71 (include 30-100)
         initialize the list to have values of 29
@@ -197,3 +255,5 @@ if __name__ == '__main__':
     print("have: {}".format(s.dailyTemperatures([89,62,70,58,47,47,46,76,100,70])))
     correct = [8,1,5,4,3,2,1,1,0,0]
     print("want: {}".format(correct))
+
+    assert s.dailyTemperatures([89,62,70,58,47,47,46,76,100,70]) == correct, ":)"
