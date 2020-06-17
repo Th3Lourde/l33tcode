@@ -21,7 +21,7 @@ from priorityQueue.priorityQueueF import priorityQueue
 
 
 class Solution:
-    def lastStoneWeight(self, stones): # Used library implementation
+    def lastStoneWeight_1(self, stones): # Used library implementation
         import heapq
         # from heapq import heappush, heappop
 
@@ -52,7 +52,7 @@ class Solution:
 
 
 
-    def lastStoneWeight_1(self, stones): # My heap doesn't work correctly :/
+    def lastStoneWeight(self, stones): # My heap doesn't work correctly :/
 
         # Step 0: Create heap
         heap = priorityQueue('max', stones)
