@@ -1,6 +1,58 @@
+'''
+One solution is to find the longest path in
+the tree
+
+'''
 
 class Solution:
+
     def findMinHeightTrees(self, n, edges):
+        neighbors = collections.defaultdict(set)
+
+        for v, w in edges:
+            neighbors[v].add(w)
+            neighbors[w].add(v)
+
+        def maxpath(v, visited):
+            visited.add(v)
+            paths = [maxpath(w, visited) for w in neighbors[v] if w not in visited]
+            path = max(paths or [[]], key=len)
+            path.append(v)
+            return path
+            
+        path = maxpath(0, set())
+        path = maxpath(path[0], set())
+        m = len(path)
+        return path[(m-1)/2:m/2+1]
+
+
+    def findMinHeightTreeas_2(self, n, edges):
+        d = {}
+
+        for i in range(n):
+            d[i] = [0]
+
+        for edge in edges:
+
+            if d[edge[0]][0] == d[edge[1]][0]:
+                d[edge[0]][0] += 1
+
+            else:
+                d[edge[0]][0] += 1
+                d[edge[1]][0] += 1
+
+            # Asign height to edge[1]
+            if d[edge[0]][0] > d[edge[1]][0]:
+                d[edge[1]] = d[edge[0]]
+
+            else:
+                d[edge[0]] = d[edge[1]]
+
+        print(d)
+
+
+
+    def findMinHeightTrees_1(self, n, edges):
         # 1) Create dictionary that returns
         # what a given node is surrounded by
         # DONE
