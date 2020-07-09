@@ -41,21 +41,85 @@ You would update what comes after node one based upon where node two is.
 
 Let's brute force this first.
 
-Bubble Sort:
+If we were doing 0(n log n) this would imply a quicksort algo.
 
+People say that we can do with with merge sort but idk
 
+singly linked list, so can't really use quicksort, unless we make
+the ll an array.
 
+convert to arr, solve via qs or mergesort, convert back to ll.
 
+Let's write this solution first.
 
+How would we do this with mergesort?
 
-
+If we can only return the nodes that we
+initially started with, then use a dict to map
+new node to old node.
 
 '''
 
 
 
 class Solution:
+
     def sortList(self, head):
+
+        if not head: return None
+
+        arr = []
+
+        node = head
+
+        while node:
+            arr.append(node.val)
+            node = node.next
+
+        def qs(arr):
+            def swap(arr, i, j):
+                tmp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = tmp
+
+            def partition(arr, lo, hi):
+                piv = arr[lo]
+                i = lo
+                j = hi
+
+                while True:
+                    while arr[i] < piv: i += 1
+                    while arr[j] > piv: j -= 1
+
+                    if i >= j: return j
+
+                    swap(arr, i, j)
+                    i += 1
+                    j -= 1
+
+            def sort(arr, lo, hi):
+                if lo < hi:
+                    piv = partition(arr, lo, hi)
+                    sort(arr, lo, piv)
+                    sort(arr, piv+1, hi)
+
+            sort(arr, 0, len(arr)-1)
+
+        qs(arr)
+
+        head = ListNode(arr[0])
+        node = head
+
+        for i in range(1, len(arr)):
+            node.next = ListNode(arr[i])
+            node = node.next
+
+        return head
+
+
+
+
+    def sortList_1(self, head): # old attempt, never finished
         p1 = head
         p2 = head.next
 
