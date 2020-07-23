@@ -3,8 +3,49 @@
 
 class Solution:
 
-
     def numIslands(self, grid):
+        ans = 0
+        visited = set()
+
+        def isLand(coord):
+            if 0 <= coord[0] < len(grid) and 0 <= coord[1] < len(grid[0]) and grid[coord[0]][coord[1]] == "1" and (coord[0], coord[1]) not in visited:
+                return True
+
+            else:
+                return False
+
+        def traverse(coord):
+            stack = [coord]
+
+            while stack:
+                coord = stack.pop()
+                visited.add(coord)
+
+                if isLand((coord[0]-1, coord[1])):
+                    stack.append((coord[0]-1, coord[1]))
+
+                if isLand((coord[0]+1, coord[1])):
+                    stack.append((coord[0]+1, coord[1]))
+
+                if isLand((coord[0], coord[1]-1)):
+                    stack.append((coord[0], coord[1]-1))
+
+                if isLand((coord[0], coord[1]+1)):
+                    stack.append((coord[0], coord[1]+1))
+
+        for row in range(len(grid)):
+            for column in range(len(grid[0])):
+                coord = grid[row][column]
+
+                if coord == "1" and (row, column) not in visited:
+                    ans += 1
+                    traverse((row, column))
+
+        return ans
+
+
+        # This solution works
+    def numIslands_2(self, grid):
         ans = 0
         map = {}
 
