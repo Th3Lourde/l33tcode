@@ -254,12 +254,129 @@ things.
 
 Come back to this tomorrow.
 
+Ok so I looked at the LC discussion, very helpful. Here is how someone
+solved it:
+
+There are two cases that we worry about: even mismatches, odd
+mismatches. Odd mismatches look like the following:
+
+x
+y
+
+or
+
+y
+x
+
+we see, xy, put it in our set.
+we see yx, check to see if it is in our set, if it is, add one
+to counter.
+
+The other sequences are "evens"
+
+e.g.
+
+xy
+   ⟹  (x,y), (y,x)
+yx
+
+These sequences take two swaps in order to be resolved.
+It follows that we try to resolve even sequences after
+we have already resolved odd sequences.
+
+Since we know an even sequence is even when if is not odd.
+We know the sequence can be resolved if it occurs twice in
+our set ← although they occur in a different order.
+
+It is also worth noting that there exists a bound on the number
+of even sequences that we can have.
+
+The sequence below gives us trouble because ∄ a y in the bottom
+row that can switch with the x. However if we were to increase
+the frequency of any of the two sequences, we would create an odd
+sequnce that could be resolved.
+
+xy
+yx
+
+Thus is an even sequence can be resolved the element that can resolve
+it occurs at most once.
+
+How to handle odd sequences
+
+sequences = set()
+swaps = 0
+
+for c1, c2 in zip(s1, s2):
+    if c1 != c2: # not a match
+        if (c1, c2) in sequences:
+            sequences.remove((c1, c2))
+            swaps += 1
+
+        else: sequences.add((c1, c2))
+
+# if we have anything left in sequences,
+# we either have proof that we cannot make
+# the strings equal, or we have an even
+# sequence that needs to get resolved.
+
+visited = set()
+
+for seq in sequences:
+    if (seq[1], seq[0]) not in sequences:
+        return -1
+
+    if (seq[1], seq[0]) not in visited:
+        swaps += 2
+        visited.add(seq)
+
+
+return swaps
+
+
+
+Sick got it, yea that is a pretty kick-ass solution.
+
+
 
 
 '''
 
 class Solution:
+
     def minimumSwap(self, s1, s2):
+        sequences = set()
+        swaps = 0
+
+        for c1, c2 in zip(s1, s2):
+            if c1 != c2: # not a match
+                if (c1, c2) in sequences:
+                    sequences.remove((c1, c2))
+                    swaps += 1
+
+                else: sequences.add((c1, c2))
+
+        # if we have anything left in sequences,
+        # we either have proof that we cannot make
+        # the strings equal, or we have an even
+        # sequence that needs to get resolved.
+
+        visited = set()
+
+        for seq in sequences:
+            if (seq[1], seq[0]) not in sequences:
+                return -1
+
+            if (seq[1], seq[0]) not in visited:
+                swaps += 2
+                visited.add(seq)
+
+
+        return swaps
+
+
+
+    def minimumSwap_1(self, s1, s2): # Answer that I never figured out
 
         s1 = list(s1)
         s2 = list(s2)

@@ -1,3 +1,15 @@
+'''
+Hello world, how are you doing today?
+
+def printFiveNumbers(nums):
+    ans = 0
+    for num in nums:
+        ans += num
+    return ans
+
+
+
+'''
 class Solution:
     def balancedStringSplit(self, s: str) -> int:
         ans = 0
