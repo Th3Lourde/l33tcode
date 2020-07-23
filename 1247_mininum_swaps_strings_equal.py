@@ -254,6 +254,7 @@ things.
 
 Come back to this tomorrow.
 
+<<<<<<< HEAD
 Ok so I looked at the LC discussion, very helpful. Here is how someone
 solved it:
 
@@ -336,6 +337,30 @@ return swaps
 
 
 Sick got it, yea that is a pretty kick-ass solution.
+=======
+The case that was tripping me up was:
+
+"yy"
+"xx"
+
+The issue was that I was looking for an
+bottom to put in my top. What if I compute
+both searches at the same time?
+
+Seems too complicated. Let's not do that.
+
+Ok so how many swaps does it take to resolve a mismatch?
+
+
+Start with a list of indices that we wish to match.
+
+Depending on what is equal we match them?
+
+Honestly let's just move on.
+
+
+
+>>>>>>> 0e300f3643fdddadaf43cf703aaf73b7c6d3a68c
 
 
 
