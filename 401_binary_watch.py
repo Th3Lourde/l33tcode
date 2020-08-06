@@ -117,6 +117,19 @@ def l_to_t(lights):
 
     return str(int(hr, 2)) + ":" + min
 
+Ok so there is something wrong my our code. I don't really
+know what it is.
+
+Let's start with the examples that we can start with and
+go from there.
+
+Ok so the flaw in our logic is that our one's place can
+end up hitting a value > 59.
+
+So when converting to a time, we should add a check to see
+if the minutes is over 60. If it is, carry the once, etc...
+
+https://leetcode.com/problems/binary-watch/dis
 
 '''
 
@@ -130,17 +143,22 @@ class Solution:
             hr = "".join(hr)
             min = "".join(min)
 
-            min = str(int(min, 2))
-
-            if len(min) == 1:
-                min = "0" + min
 
             hr = int(hr, 2)
 
             if hr > 11:
                 return None
 
-            return str(hr) + ":" + min
+            min = int(min, 2)
+
+            if min > 59:
+                min -= 59
+                hr += 1
+
+            if len(str(min)) == 1:
+                min = "0" + str(min)
+
+            return str(hr) + ":" + str(min)
 
         ans = []
         times = set({None})
@@ -149,8 +167,6 @@ class Solution:
             if n == 0:
                 # lights is a list
                 time = l_to_t(lights)
-
-                print(time)
 
                 if time not in times:
                     times.add(time)
@@ -175,17 +191,24 @@ def l_to_t(lights):
     hr = "".join(hr)
     min = "".join(min)
 
-    min = str(int(min, 2))
 
-    if len(min) == 1:
-        min = "0" + min
+    hr = int(hr, 2)
 
-    # return min + ":" + str(int(hr, 2)
-    # return str(int(min, 2)) + ":" + hr
-    return str(int(hr, 2)) + ":" + min
+    if hr > 11:
+        return None
+
+    min = int(min, 2)
+
+    if min > 59:
+        return None
+
+    if len(str(min)) == 1:
+        min = "0" + str(min)
+
+    return str(hr) + ":" + str(min)
 
 
-l_to_t(["1","1","0","0","0","0","0","0","0","0"])
+l_to_t(["1","0","1","1","0","0","0","0","0","0"])
 
 
 if __name__ == '__main__':
