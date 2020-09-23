@@ -1,44 +1,50 @@
 '''
-Given two images (as matrices)
-Matrices are square.
+Brute force solution would be to
+iterate through all of the possible
+placements of one image on top of the
+other image and then simply compute the
+overlap.
 
-Given that you can perform any
-translation that you wish on the
-image, return the number of ones
-that will be lined up.
+This would be O(n²).
 
-e.g.
-A = [
-    [1,1,0],
-    [0,1,0],
-    [0,1,0],
-    ]
+Something better, might be just to perform
+this with all of the 1's.
 
-B = [
-    [0,0,0],
-    [0,1,1],
-    [0,0,1],
-    ]
+Or maybe all of the patterns of the ones.
 
-We translate A one right and one down
-and get out match.
+If we have a one, and the patter continues if
+we go right, follow the pattern.
 
-We could loop through every possible
-translation and record the number of
-ones that match up. Return the max.
+I'm pretty sure that this is the right answer.
 
-So how would we simulate the translation?
-Well, the first thing we'd probably do is
-record all of the indices of the ones in the
-first image, then iterate through all possible
-translations and compute the matches.
+The trickier part is how to encode movements that
+go up/down? Which is to focus on representing scenarios
+where we have two options (and we should probably explore both).
 
-Probably use a function to do this.
+Ok so here is the idea.
 
-Found a good guide with a bunch of problems
-on leetcode, going to do that instead of this.
+1) Create two lists that represent the coordinates of all of the
+    different 1's in both the A and the B matrix.
 
-This problem isn't fun.
+If we were going to perform a translation on either matrix, we
+would require a distinguishable translation vector in order to
+do so.
+
+If we iterate through all of the 1's in A and all of the 1's in B,
+We can match a one from A and a one from B via a given translation vector.
+
+For every 1 in A and 1 in B, we calculate the translation vector needed in order
+for these two values to overlap.
+
+It will likely be the case that the same translation vector will pop up multiple
+times while we are doing this.
+
+It would be nice if we could answer the questions of: For a given translation vector,
+how many instances of overlap exist? If we were to create a dict with which we could
+keep track how many overlaps exist for a given translation vector, we would be able to
+answer the question.
+
+
 
 '''
 
@@ -46,4 +52,19 @@ This problem isn't fun.
 
 class Solution:
     def largestOverlap(self, A, B):
-        ...
+        A = [(row, col) for row in range(len(A)) for col in range(len(A[0])) if A[row][col] == 1]
+        B = [(row, col) for row in range(len(B)) for col in range(len(B[0])) if B[row][col] == 1]
+
+        d = {}
+
+        for a_row, a_col in A:
+            for b_row, b_col in B:
+                translation_vect = (a_row-b_row, a_col-b_col)
+
+                if translation_vect not in d:
+                    d[translation_vect] = 1
+
+                else:
+                    d[translation_vect] += 1
+
+        return max(list(d.values()))

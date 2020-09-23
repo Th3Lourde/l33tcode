@@ -1,82 +1,212 @@
 '''
-Ok let's learn that bitwise operator.
+Given an array of integers, arr[int]:
 
-Ok so the prompt is to countTriplets that can
-form two arrays of equal XOR.
+Select indices, (i,j,k) ∋ i ≤ j ≤ k ⩓:
 
-What is XOR?
+arr[i] ^ arr[i+1] ^ ... ^ arr[j-1] == arr[j] ^ arr[j+1] ^ ... ^ arr[k]
 
-XOR returns true when both of the inputs given are
-unique.
+Return the number of indices that this is true for.
 
-So basically, we want to know whether or not all
-of the elements ∈ [i,j-1] are unique and then
-whether or not elements ∈ [j,k] are unique.
+Where ^ is the bitwise xor expression
 
-Well the question isn't really whether or not the
-elements are unique, but whether or not both subarrays
-output the same value when we pass XOR operation through
-all of the elements.
+According to: https://stackoverflow.com/questions/14526584/what-does-the-xor-operator-do#:~:text=XOR%20is%20a%20binary%20operation,corresponding%20bits%20of%20a%20number
 
-I wonder what a good way to do this might be.
+This operation is also the same as addition modulo 2.
 
-What we could do is use a set that we remove and add elements
-to.
+So we are going to itr through all possible options.
 
-Set wouldn't work, that would only tell us what the elements are.
+We are also going to eval whether or not the subarrays fit.
 
-We could check whether or not the size of the sets are the same
-as the length of the subarray.
+It would be nice if we could just update each current sum as we add/subtract numbers
+from the sublist that we are working with.
 
-One of the major assumptions that we are making is how XOR operates
-when one of the elements match.
+1) Initialize a and b based upon starting point
+2) Add/Subtract elements from a,b
 
-The current assumption is that if at least one element matches, the
-result is the same when 1-n elements match.
+[2,3,1,6,7]
+ i j     k
 
-We are assuming the question is more along the lines of: are the subarrays
-that we form composed of only unique elements?
+(3^4^5)^5 = (3^4)
 
-We should probably check this assumption.
+ a = [2] | b = [3,1,6,7]
+ a = [2,3] | b = [1,6,7]
+ a = [2,3,1] | b = [6,7]
+ a = [2,3,1,6] | b = [7]
 
-Ok so this assumption holds iff we are working 1 and 0. Else it doesn't
-really match what is true.
+7^10 == 13
+13 ^ 7 == 10
+13 ^ 10 == 7
 
-Let's look at the discussion for this one and move on :)
+So we can have our queue of elements as well as the current ^.
+When we remove an element, pop from front, a ^= A.pop()
 
-Ok so here is what someone else does:
 
-We compute the ^ in a smart way that allows us to minimize
-the number of computations. My answer is correct, and it
-has more operations then it needs to have.
 
-So we have these two subarrays that we are creating.
-
-The first thing that we do is define what starting points
-we are going to iterate through.
-
-We start at 0 and end up at len(arr)-1
-
-For each starting point, we have a few ending points that we
-can cycle through.
-
-Yea no. Let's move on. I'd rather not have fun with bitwise
-operations atm.
+ a = [2], (2) | b = [3,1,6,7], (3)
 
 
 
 
+ a = [2,3] | b = [1,6,7]
+ a = [2,3,1] | b = [6,7]
+ a = [2,3,1,6] | b = [7]
+
+Initialize values with ijk split
+
+a is left list partition
+b is right list partition
+
+While j <= k:
+    pop b, catch term, append to a
+    compare both a,b
+    j += 1
+
+1) Check Initialization first
+2) Check iteration second
+
+
+
+[2,3,1,6,7]
+
+Second time through was much better, go me.
 
 
 
 '''
 
-# Pretty sure that this is write. Got TLE. Probably has to do
-# with this bitwise operator trick that I don't know.
-# Should probably learn it ♡
-
 class Solution:
     def countTriplets(self, arr):
+        ans = 0
+
+        for i in range(len(arr)-1):
+
+            for k in range(len(arr)-1, i, -1):
+                if k == len(arr)-1:
+                    B = arr[k]
+
+                    for z in range(k-1, i, -1):
+                        B ^= arr[z]
+
+                    b = B
+                    # print("[A] Bitwise for: {} = {}".format(arr[i+1: len(arr)], b))
+
+                else:
+                    B ^= arr[k+1]
+                    b = B
+
+                    # print("[B] Bitwise for: {} = {}".format(arr[i+1: k+1], b))
+
+                a = arr[i]
+
+
+                for j in range(i+1, k+1):
+                    # print(j)
+                    a ^= arr[j]
+                    b ^= arr[j]
+
+
+                    if a == b:
+                        # print("[ans] {} {} {}".format(i, j, k))
+                        ans += 1
+
+                    # else:
+                    #     print("[term] {} {} {}".format(i, j, k))
+
+
+        return ans
+
+
+
+
+    def countTriplets_2(self, arr):
+
+        class xorClass:
+            def __init__(self, vals):
+                self.val = vals[0]
+
+                for i in range(1,len(vals)):
+                    self.val ^= vals[i]
+
+                self.vals = vals
+
+            def __repr__(self):
+                return self.val
+
+            def __str__(self):
+                return "repr: {} val: {}".format(self.vals, self.val)
+
+            def pushValue(self, val):
+                self.val ^= val
+                self.vals.append(val)
+
+            def popVal(self):
+                term = self.vals[0]
+                self.vals = self.vals[1:]
+                self.val ^= term
+                return term
+
+        i = 0
+
+        ans = 0
+
+        print("arr: {}".format(arr))
+
+        while i < len(arr)-1:
+            k = len(arr)
+            j = i+1 # Del me
+
+            # Initialize a,b
+            a = xorClass(arr[i:j])
+            b = xorClass(arr[j:k])
+
+            print(a)
+            print(b)
+
+            while i < k:
+
+                j = i+1
+
+                a = xorClass(arr[i:j])
+                b = xorClass(arr[j:k])
+
+                while j < k-1:
+                    if a.val == b.val:
+                        ans += 1
+                    # check a == b
+                    j += 1
+                    tmp = b.popVal()
+                    a.pushValue(tmp)
+
+                    print(a)
+                    print(b)
+
+
+                k -= 1
+
+                if i+1 < k:
+                    a = xorClass(arr[i:i+1])
+                    b = xorClass(arr[i+1:k])
+
+                else:
+                    break
+
+                print("")
+                print(a)
+                print(b)
+
+            i += 1
+            # return
+
+
+        return ans
+
+
+
+
+
+
+
+    def countTriplets_1(self, arr):
 
         def validTrpl(tpl):
             a = arr[tpl[0]]

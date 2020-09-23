@@ -1,28 +1,71 @@
 '''
-Given a binary tree, return the sum
-of values of its deepest leaves
+itr via level order and return sum
 
-1) Find the height of the tree
-2) Sum the values of all nodes at such height.
+have a lcl var that keeps track of the current lvl
 
-1) bfs, level order traversal, create a dictionary
-s.t. key = level, val = sum of nodes at that level
+each node has the level as well as the value
 
-0: 1, 1: 2+3, 2: 4+5+6, 3: 7+8
+bfs
 
-Keep a local var that keeps track of level
+ans = 0
+lvl = 0
 
-return d[level]
+(lvl, val)
+(0, 1)
 
-0(n) run-time
-0(n) = 0(n) memory complexity
+if lvl == lvl:
+    ans += val
+
+else:
+    lvl = lvl
+    ans = val
+
+
+return ans
+
+Ok, so only += ans if we are a leaf
 
 
 
 '''
 
 class Solution:
-    def deepestLeavesSum(self, root): # This works, is slow
+
+
+    # Redo
+    def deepestLeavesSum(self, root):
+        ans = 0
+        lvl = 0
+
+        q = [(0, root)]
+
+        while q:
+            node = q.pop()
+
+            if node[1].left and node[1].right:
+                q.insert(0, (node[0]+1, node[1].left))
+                q.insert(0, (node[0]+1, node[1].right))
+
+            elif node[1].left:
+                q.insert(0, (node[0]+1, node[1].left))
+
+            elif node[1].right:
+                q.insert(0, (node[0]+1, node[1].right))
+
+            else:
+
+                if node[0] == lvl:
+                    ans += node[1].val
+
+                # elif node[0] > lvl:
+                else: # Do I need the elif?
+                    lvl = node[0]
+                    ans = node[1].val
+
+        return ans
+
+
+    def deepestLeavesSum_correct(self, root): # This works, is slow
 
         d = {}
         q = [ [root, 0] ]
