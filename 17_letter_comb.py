@@ -1,7 +1,53 @@
+'''
+Given a string containing digits 2-9,
+return all possible letter combinations
+that the number could represent.
 
+recursive calls
+
+(digits, idx, current_letters)
+
+'''
 
 class Solution:
+
     def letterCombinations(self, digits):
+        if len(digits) == 0:
+            return []
+
+        num_chr = [
+            [],              # 0
+            [],              # 1
+            ['a', 'b', 'c'], # 2
+            ['d', 'e', 'f'],
+            ['g', 'h', 'i'],
+            ['j', 'k', 'l'],
+            ['m', 'n', 'o'],
+            ['p', 'q', 'r', 's'],
+            ['t', 'u', 'v'],
+            ['w', 'x', 'y', 'z'],
+        ]
+
+        def itr(digits, idx, current_letters, ans):
+
+            if len(current_letters) == len(digits):
+                ans.append(current_letters)
+                return
+
+
+            for chr in num_chr[int(digits[idx])]:
+                itr(digits, idx+1, current_letters+chr, ans)
+
+        ans = []
+
+        itr(list(digits), 0, "", ans)
+
+        return ans
+
+
+
+    # Works
+    def letterCombinations_1(self, digits):
         d = {
             "2": ["a","b","c"],
             "3": ["d","e","f"],

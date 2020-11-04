@@ -6,8 +6,79 @@ class ListNode:
     def __str__(self):
         return "{} --> {}".format(self.val, str(self.next))
 
+
+'''
+[9,9,9,9,9,9,9]
+       1
+
+[9,9,9,9]
+       2
+
+[8,9,9, ]
+       3
+
+tmp = 1
+
+
+
+
+
+'''
+
 class Solution:
-    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+
+    def addTwoNumbers(self, l1, l2):
+        p1 = l1
+        p2 = l2
+
+        v = p1.val + p2.val
+
+        ans = ListNode(v%10)
+        tmp = int((v - v%10)/10)
+
+        p1 = p1.next
+        p2 = p2.next
+        p3 = ans
+
+        while p1 and p2:
+            v = p1.val + p2.val + tmp
+
+            p3.next = ListNode(v%10)
+
+            tmp = int((v - v%10)/10)
+
+            p1 = p1.next
+            p2 = p2.next
+            p3 = p3.next
+
+        # Check if p1 or p2
+        if p1 or p2:
+            if p1:
+                p3.next = p1
+
+            else:
+                p3.next = p2
+
+
+            p = p3.next
+
+            while p:
+                s = p.val + tmp
+                p.val = s%10
+                tmp = max(0, int((s - s%10)/10))
+
+                if tmp == 0:
+                    break
+
+                p3 = p3.next
+                p = p.next
+
+        if tmp:
+            p3.next = ListNode(tmp)
+
+        return ans
+        # Works, 10/15/19
+    def addTwoNumbers_1(self, l1: ListNode, l2: ListNode) -> ListNode:
         tens = 0
 
         n1 = l1
@@ -53,28 +124,26 @@ class Solution:
             ans = ans.next
 
 
-if __name__ == '__main__':
-    # List one
-    # a1 = ListNode(2)
-    # b1 = ListNode(4)
-    # c1 = ListNode(3)
-    #
-    # a1.next = b1
-    # b1.next = c1
-    # c1.next = None
-    #
-    # a2 = ListNode(5)
-    # b2 = ListNode(6)
-    # c2 = ListNode(4)
-    #
-    # a2.next = b2
-    # b2.next = c2
-    # c2.next = None
 
-    a1 = ListNode(5)
-    a2 = ListNode(5)
+def generateLL(arr):
+    nodes = []
+
+    for e in arr:
+        nodes.append(ListNode(e))
+
+    for i in range(len(nodes)-1):
+        nodes[i].next = nodes[i+1]
+
+    return nodes[0]
+
+
+if __name__ == '__main__':
+    a = generateLL([9,9,9,9,9,9,9])
+    b = generateLL([9,9,9,9])
+
+    print(a)
+    print(b)
 
     s = Solution()
 
-    r = s.addTwoNumbers(a1, a2)
-    print(r)
+    print(s.addTwoNumbers(a, b))
