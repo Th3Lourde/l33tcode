@@ -4,7 +4,8 @@ Still working on problem
 '''
 
 class Solution:
-    def maxSumDivThree(self, nums):
+        # Does not work
+    def maxSumDivThree_I(self, nums):
         def getTarget(currentElement):
             tmp =  currentElement//3
             if tmp*3 < currentElement:
@@ -88,7 +89,43 @@ class Solution:
 
         ans += newSum
 
+    def maxSumDivThree(self, nums):
+        ans = 0
+
+        ones = []
+        twos = []
+
+        for e in nums:
+            if e % 3 == 0:
+                ans += e
+            elif e % 3 == 1:
+                ones.append(e)
+            elif e % 3 == 2:
+                twos.append(e)
+
+        ones.sort()
+        twos.sort()
+
+        tmp = sum(ones) + sum(twos)
+        remove = float('inf')
+
+        if tmp % 3 == 0:
+            return ans + tmp
+        elif tmp % 3 == 1:
+            if len(ones) > 0: remove = min(ones[0], remove)
+            if len(twos) > 2: remove = min(twos[0]+twos[1], remove)
+        elif tmp % 3 == 2:
+            if len(twos) > 0: remove = min(twos[0], remove)
+            if len(ones) > 1: remove = min(ones[0]+ones[1], remove)
+
+        return ans + tmp - remove
+
+
 
 if __name__ == '__main__':
     s = Solution()
     s.maxSumDivThree([3,6,5,1,8])
+
+    print(s.maxSumDivThree([3,6,5,1,8]) == 18)
+    print(s.maxSumDivThree([4]) == 0)
+    print(s.maxSumDivThree([1,2,3,4,4]) == 12)

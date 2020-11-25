@@ -8,6 +8,8 @@ BFS, log the values of the nodes as we traverse
 through the tree.
 '''
 
+import json
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -21,6 +23,15 @@ class TreeNode:
 class Codec:
 
     def serialize(self, root):
+
+        def tuplify(root):
+            if root ==  None:
+                return None
+            return [root.val, tuplify(root.left), tuplify(root.right)]
+
+        return json.dumps(tuplify(root))
+
+    def serialize_II(self, root):
         if not root:
             return "[None]"
 
@@ -47,9 +58,6 @@ class Codec:
                 q = [None, None] + q
 
         return "{}".format(ans)
-
-
-
 
     def serialize_1(self, root): # Does not work
 
@@ -126,7 +134,7 @@ class Codec:
         return d[0]
 
 
-    def deserialize(self, data):
+    def deserialize_II(self, data):
         if data == "[None]":
             return None
 
@@ -183,10 +191,21 @@ class Codec:
 
         return ans
 
+    def deserialize(self, data):
 
-if __name__ == '__main__':
-    s = Codec()
+        def isomorphism(vals):
+            if not vals:
+                return
 
+            node = TreeNode(vals[0])
+            node.left = isomorphism(vals[1])
+            node.right = isomorphism(vals[2])
+
+            return node
+
+        return isomorphism(json.loads(data))
+
+def makeTree():
     root = TreeNode(5)
     a = TreeNode(2)
     b = TreeNode(3)
@@ -203,9 +222,19 @@ if __name__ == '__main__':
 
     c.left = e
     c.right = f
+    return root
+
+if __name__ == '__main__':
+    s = Codec()
+
+    root = makeTree()
 
     r = s.serialize(root)
 
     print(r)
+
+    json.loads(r)
+
+    s.deserialize(r)
 
     print(str(root) == str(s.deserialize(r)))
