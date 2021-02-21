@@ -19,7 +19,7 @@ class Solution:
         return resp[n]
 
 
-    def numTrees(self, n):
+    def numTrees_1(self, n):
         # figure out the number of nodes you can fix
         tw0_ch1ldr3n = (n-1)//2
 
@@ -80,10 +80,113 @@ class Solution:
         return int(math.factorial(2*n)/(math.factorial(n)*math.factorial(n+1)))
 
 
+    # Brute-force recursive solution
+    # Works, too slow.
+    def numTreesBruteForce(self, n):
+
+        if n == 0:
+            return 1
+
+        if n == 1 or n == 2:
+            return n
+
+        ans = 0
+
+        # (n,0), (n-1, 1), (n-2, 2) ... (n-1-k,k) until k = n, or n-k = 0
+        for k in range(n):
+            ans += self.iter(n-1-k, k)
+
+        return ans
+
+    def iterBruteForce(self, left, right):
+        if left == 2 and right == 2:
+            return 4
+        elif left == 2 and right == 1:
+            return 2
+        elif left == 1 and right == 2:
+            return 2
+        elif left <= 1 and right <= 1:
+            return 1
+
+        if left == 0:
+            return self.numTrees(right)
+
+        elif right == 0:
+            return self.numTrees(left)
+
+            # Hoping left > 1 and right > 1
+            # We tax the node in numTrees, so no need
+            # to - 1 here.
+        else:
+            return self.numTrees(left) * self.numTrees(right)
+
+    #DP
+    def numTreesDpRec(self, n):
+        if n == 0:
+            return 1
+
+        if n == 1 or n == 2:
+            return n
+
+        self.dp = [-1 for i in range(n+1)]
+        self.dp[0] = 0
+        self.dp[1] = 1
+        self.dp[2] = 2
+
+        return self.oneNode(n)
+
+    def oneNode(self, n):
+        if self.dp[n] != -1:
+            return self.dp[n]
+
+        ans = 0
+
+        for k in range(n):
+            # ans += self.twoNodes(n-1-k, k)
+            l = n-1-k
+            r = k
+
+            if l == 0:
+                ans += self.oneNode(r)
+            elif r == 0:
+                ans += self.oneNode(l)
+
+            else:
+                ans += self.oneNode(l) * self.oneNode(r)
+
+        self.dp[n] = ans
+
+        return ans
+
+    def numTrees(self, n):
+        if n == 1 or n == 2:
+            return n
+
+        dp = [0 for i in range(n+1)]
+        dp[0] = 1
+
+        for nodes in range(1, n+1):
+            for k in range(nodes):
+                l = nodes-1-k
+                r = k
+
+                dp[nodes] += dp[l] * dp[r]
+
+        return dp[n]
+
+
+
+
 
 if __name__ == '__main__':
     s = Solution()
 
-    for i in range(1, 5):
-        # print(s.numTrees(i))
-        print(s.numTrees_catalan(i))
+    print(s.numTrees(1))
+    print(s.numTrees(2))
+    print(s.numTrees(3))
+    print(s.numTrees(7))
+    print(s.numTrees(10))
+
+    # for i in range(1, 5):
+    #     print(s.numTrees(i))
+        # print(s.numTrees_catalan(i))

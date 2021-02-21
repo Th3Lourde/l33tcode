@@ -2,7 +2,6 @@
 
 class Solution:
 
-
     '''
     Ok so we are using the goalpost approach
     first term can't be a repeat
@@ -10,7 +9,7 @@ class Solution:
     if first, second can't be a repeat, then neither can third :)
     '''
 
-    def threeSum(self, nums):
+    def threeSum_3(self, nums):
         ans = []
         nums.sort()
 
@@ -47,8 +46,6 @@ class Solution:
                     s += 1
 
         return ans
-
-
 
     # smart-solution
     def threeSum_2(self, nums):
@@ -124,7 +121,39 @@ class Solution:
 
         return ans
 
+
+        # 1.10.21
+    def threeSum(self, arr):
+        ans = []
+        arr.sort()
+        n = len(arr)
+
+        for i in range(n-1):
+            if arr[i] == arr[i+1]:
+                continue
+
+            targ = (-1)*arr[i]
+            l, r = i+1, n-1
+
+            while l < r:
+                if arr[l]+arr[r] == targ:
+                    ans.append([arr[l], arr[r], arr[i]])
+                    l += 1
+                    # Do something with l
+                    while l < r and arr[l] == arr[l-1]: l += 1
+
+                if arr[l]+arr[r] < targ:
+                    l += 1
+                else:
+                    r -= 1
+        return ans
+
+
+
+
 if __name__ == '__main__':
     s = Solution()
 
     print(s.threeSum([-1, 0, 1, 2, -1, -4]))
+    print(s.threeSum([]))
+    print(s.threeSum([0]))

@@ -53,34 +53,49 @@ class Solution:
     tmpr = iterator that starts on right
     '''
 
-    def maxArea(self, height):
+    def maxArea(self, h):
+        def calcArea(i,j,h1,h2):
+            return abs(i-j)*min(h1,h2)
 
-        def getArea(i, j, n1, n2):
-            return abs(i-j)*min(n1,n2)
+        l = 0
+        mL = 0
+        r = len(h)-1
+        mR = len(h)-1
+        ans = calcArea(l,r,h[l],h[r])
 
-        ml = tmpl = 0
-        mr = tmpr = len(height)-1
-        ans = getArea(ml, mr, height[ml], height[mr])
-        print("Current ans: {}".format(ans))
-
-        while tmpl < tmpr:
-            tmpl += 1
-            tmp = getArea(tmpl, mr, height[tmpl], height[mr])
-
+        while l < r:
+            l += 1
+            tmp = calcArea(l,mR,h[l],h[mR])
             if tmp > ans:
-                ml = tmpl
                 ans = tmp
-                print("updated ans: {}".format(ans))
+                mL = l
 
-            tmpr -= 1
-            tmp = getArea(ml, tmpr, height[ml], height[tmpr])
-
+            r -= 1
+            tmp = calcArea(mL,r,h[mL],h[r])
             if tmp > ans:
-                mr = tmpr
                 ans = tmp
-                print("updated ans: {}".format(ans))
+                mR = r
 
         return ans
+
+
+        # modern, correct
+    def maxArea(self, h):
+        ans = float('-inf')
+        l, r = 0, len(h)-1
+
+        while l < r:
+            water = (r-l)*min(h[l], h[r])
+            if water > ans:
+                ans = water
+
+            # Update Goal Posts
+            if h[l] < h[r]:
+                l += 1
+            else:
+                r -= 1
+        return ans
+
 
 if __name__ == '__main__':
     s = Solution()

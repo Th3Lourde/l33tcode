@@ -93,10 +93,6 @@ class Solution:
         return profit
 
 
-
-
-
-
         # maxes = {}
         # for i in range(1, len(prices)-1):
         #     if prices[i] > prices[i+1]:
@@ -106,13 +102,6 @@ class Solution:
         #
         # print("prices: {}".format(prices))
         # print("maxes: {}".format(maxes))
-
-
-
-
-
-
-
 
     # This is wrong
     def maxProfit_1(self, prices):
@@ -143,10 +132,19 @@ class Solution:
 
         return totalProfit
 
+    def maxProfit(self, prices):
+        max_profit, lowest_price = 0, float('inf')
 
+        for price in prices:
+            lowest_price = min(lowest_price, price)
+            profit = price-lowest_price
+            max_profit = max(max_profit, profit)
+
+        return max_profit
 
 
 if __name__ == '__main__':
     s = Solution()
 
     print(s.maxProfit([7,1,5,3,6,4]))
+    print(s.maxProfit([7,6,4,3,1]))

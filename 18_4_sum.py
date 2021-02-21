@@ -1,7 +1,6 @@
 
-
 class Solution:
-    def fourSum(self, nums, target):
+    def fourSum_1(self, nums, target):
         if len(nums) < 4:
             return []
 
@@ -33,6 +32,52 @@ class Solution:
 
         return ans
 
+        # Works, is pretty slow
+    def fourSum(self, nums, target):
+        if len(nums) < 4: return []
+
+        d = {}
+        ans = {}
+
+        nums.sort()
+
+        for i in range(len(nums)):
+            key = target-nums[i]
+
+            if key in d:
+                d[key].append(i)
+            else:
+                d[key] = [i]
+
+        for i in range(len(nums)-3):
+            for j in range(i+1, len(nums)-2):
+                for z in range(j+1, len(nums)-1):
+                    targetKey = nums[i]+nums[j]+nums[z]
+                    targetSet = set({i,j,z})
+
+                    if targetKey in d:
+                        for idx in d[targetKey]:
+                            if idx not in targetSet:
+                                possibleAns = [nums[i],nums[j],nums[z],nums[idx]]
+                                possibleAns.sort()
+                                possibleAns  = tuple(possibleAns)
+
+                                if possibleAns not in ans:
+                                    ans[tuple(possibleAns )] = True
+
+        resp = []
+
+        sums =  list(ans.keys())
+
+        for s in sums:
+            resp.append(list(s))
+
+        return resp
+        # return list(ans.keys())
+
+
+
+
 
 
 if __name__ == '__main__':
@@ -47,4 +92,6 @@ if __name__ == '__main__':
     target = 4
 
 
-    print(s.fourSum(nums, target))
+    # print(s.fourSum(nums, target))
+    # print(s.fourSum([1,0,-1,0,-2,2], 0))
+    print(s.fourSum([], 0))

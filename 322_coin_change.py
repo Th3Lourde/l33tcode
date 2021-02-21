@@ -1,82 +1,85 @@
-import sys
-sys.path[0] = "/home/th3lourde/Documents/InterviewPrep/tools/python"
-
-'''
-[186,419,83,408]
-6249
-20
-
-So the question is really whether or not these numbers can divide another number evenly.
-How can we go about this?
-
-One way to do this is to iterate through all possible permutations of these elements and
-see if you can reduce this number down to zero.
-
-lcd(a,b): the smallest number that can be expressed as a multiple of a and b
-|--> Meaning a^n = b^y = lcd(a,b), y,n \in Z.
-gcd(a, b): largest number (not zero) that divides a and b
-
-So apparently this is a dynamic programming problem.
-
-So how would I do this?
-Let's say that we have [a,b,c,d] and target sum z
-start with a, reduce z via z // a. Pick an element from [b,c,d]. Rinse and repeat until
-we are out of coins. If we can do it, return the number of coins. If we can't, return None
-
-I'm assuming that we use up all of the coins. We won't need to do this.
-
-
-'''
-
-from priorityQueue.priorityQueueF import priorityQueue
-
 class Solution:
+    def coinChange_1(self, coins, amount):
+        dp = [float('inf') for _ in range(amount+1)]
 
-    def coinChange(self, coins, amount): # Not doing DP atm. Make progress on your list :)
-        def perms(coin, coins, num, amount):
-            # Account for the number of coins we can use.
+        def itr(distance):
+            if distance < 0:  return -1
+            if distance == 0: return 0
 
-            num += amount // coins[coin]
-            amount = amount % coins[coin]
+            if dp[distance] != float('inf'):
+                return dp[distance]
 
-            coins = list(coins)
-            del coins[coins[coin]]
+            minVal = float('inf')
 
-            if amount == 0: return coins
+            for c in coins:
+                z = itr(distance-c)
 
-            ans = None
+                if z >= 0 and z+1 < minVal:
+                    minVal = z+1
 
-            for c in range(len(coins)):
-                r = perms(c, list(coins), num, amount)
-                if r:
-                    if ans == None:
-                        ans = r
-                    else:
-                        ans = min(r, ans)
+            if minVal == float('inf'):
+                dp[distance] = -1
+            else:
+                dp[distance] = minVal
 
+            return dp[distance]
 
-            return ans
+        return itr(amount)
 
+    # top down
+    def coinChange_2(self, coins, amount):
+        dp = [None for _ in range(amount+1)]
+        dp[0] = 0
 
+        def itr(n):
+            if n < 0: return -1
+            if n == 0: return 0
 
-    def coinChange_1(self, coins, amount): # Doesn't work. I think that I should be using lcd or gcd or something similar
-        pq = priorityQueue('max', coins)
+            if dp[n] != None: return dp[n]
 
-        ans = 0
+            lowest = -1
 
-        while pq.getSize() != 0:
-            coin = pq.poll()
-            ans += amount // coin
-            amount = amount % coin
+            for coin in coins:
+                req = itr(n-coin)
 
-            if amount == 0:
-                return ans
+                if req != -1:
+                    if lowest == -1:
+                        lowest = req+1
 
-        return -1
+                    elif req+1 < lowest:
+                        lowest = req+1
+
+            dp[n] = lowest
+            return dp[n]
+
+        itr(amount)
+        return dp[amount]
+
+    # bottom up
+    def coinChange(self, coins, amount):
+        dp = [None for _ in range(amount+1)]
+        dp[0] = 0
+
+        for n in range(1, amount+1):
+            lowest = -1
+
+            for c in coins:
+                if n-c >= 0 and dp[n-c] != None:
+                    if lowest == -1 and dp[n-c] != -1:
+                        lowest = dp[n-c] + 1
+                    elif lowest != -1 and dp[n-c] != -1 and dp[n-c]+1 < lowest:
+                        lowest = dp[n-c] + 1
+
+            dp[n] = lowest
+
+        return dp[amount]
 
 
 
 if __name__ == '__main__':
     s = Solution()
-
-    print(s.coinChange([2], 3))
+    print(s.coinChange( [1,2,5], 11))
+    print(s.coinChange( [2], 3))
+    print(s.coinChange( [1], 0))
+    print(s.coinChange( [1], 0))
+    print(s.coinChange( [186,419,83,408], 6249))

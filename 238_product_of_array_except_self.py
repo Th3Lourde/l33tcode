@@ -4,7 +4,7 @@
 class Solution:
 
     # Optimal solution
-    def productExceptSelf(self, nums):
+    def productExceptSelf_o(self, nums):
         lp = [1]*len(nums) # False for lp[0]
         for i in range(1, len(nums)):
             lp[i] = lp[i-1]*nums[i-1]
@@ -15,7 +15,6 @@ class Solution:
             rp *= nums[i]
 
         return lp
-
 
     # left product, right product solution
     # space complexity is O(2n)
@@ -33,9 +32,6 @@ class Solution:
             ans[i] = lp[i]*rp[i]
 
         return ans
-
-
-
 
     def productExceptSelf_1(self, nums):
         prod = 1
@@ -63,9 +59,40 @@ class Solution:
             for i in range(len(nums)):
                 ans[i] -= (nums[i]-1)*ans[i]
 
+        # 0(n), not constant space
+    def productExceptSelfNotSpace(self, nums):
+        l = [1 for _ in range(len(nums))]
+        r = [1 for _ in range(len(nums))]
 
+        for i in range(1, len(nums)):
+            l[i] = nums[i-1]*l[i-1]
+
+        for i in range(len(nums)-2, -1, -1):
+            r[i] *= nums[i+1]*r[i+1]
+
+        ans = []
+
+        for i in range(len(nums)):
+            ans.append(l[i]*r[i])
+
+        return ans
+
+    def productExceptSelf(self, nums):
+        ans = [1 for _ in range(len(nums))]
+
+        for i in range(1, len(nums)):
+            ans[i] = nums[i-1]*ans[i-1]
+
+        r = 1
+
+        for i in range(len(nums)-1, -1, -1):
+            ans[i] *= r
+            r *= nums[i]
+
+        return ans
 
 
 if __name__ == '__main__':
     s = Solution()
+    s.productExceptSelf([1,2,3,4])
     print(s.productExceptSelf([4,5,1,8,2,10,6]))

@@ -1,0 +1,8 @@
+	# binary search for the value in s2 that's closest to the remaining value
+  i2=bisect_left(s2,remain)
+
+bisect_left, given arr s2 and target value remain, find the value closest
+to target in log(n) time (using binary search)
+
+
+enque, deque 

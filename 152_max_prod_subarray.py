@@ -1,8 +1,6 @@
 
-
-
 class Solution:
-    def maxProduct(self, nums) -> int:
+    def maxProductO(self, nums) -> int:
         nums2 = nums[::-1]
 
         for i in range(1, len(nums)):
@@ -10,7 +8,6 @@ class Solution:
             nums2[i] *= nums2[i-1] or 1
 
         return max(nums + nums2)
-
 
     def maxProduct2(self, nums) -> int:
         r = nums[0]
@@ -33,20 +30,24 @@ class Solution:
 
         return r
 
+    def maxProduct(self, nums):
+        res = max(nums)
+        curMax,curMin = 1, 1
+
+        for n in nums:
+            if n == 0:
+                curMax,curMin = 1, 1
+                continue
+
+            tmp = curMax * n
+
+            curMax = max(n, curMax*n, curMin*n)
+            curMin = min(n, tmp, curMin*n)
+            res = max(curMax, curMin, res)
+
+        return res
 
 if __name__ == '__main__':
-    # n = [2,3,-2]
-    # n = [2,3,-2,4]
-    n = [-2,3,-4]
-
     s = Solution()
-    r = s.maxProduct(n)
-    print(r)
-
-
-    # n = [2,3,-2]
-    # n = [2,3,-2,4]
-    n = [-2,3,-4]
-
-    r = s.maxProduct2(n)
-    print(r)
+    print(s.maxProduct([2,3,-2,4]))
+    print(s.maxProduct([-2,0,-1]))

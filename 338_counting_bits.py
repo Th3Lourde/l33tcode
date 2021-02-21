@@ -79,16 +79,55 @@ if there is not a zero in the expression:
 exp = "11"
 if 0 not in exp:
     exp = "1"+len(exp)*"0"
+'''
+
+'''
+[itr] (1)
+[1]
+ones = 1
+
+[itr] (2)
+ones = len(repr)
+[1, 0] // add a zero
+ones = 1 // set ones to 1
+
+[itr] (3)
+[1, 1]
+ones = 2
+
+[itr] (4)
+ones = len(repr)
+[1, 0, 0] // add a zero
+ones = 1 // set ones to 1
+
+[itr] (5)
+[1, 0, 1]
+ones = 2
+
+[itr] (6)
+[1, 1, 0] // write one, set all ones on rhs to zero.
+ones = 3
+
+-------------------------------------------------------------
+
+[itr] (1)
+[1]
+ones = 1
+
+- if number of ones == len() → put one one on lhs, all others to zeros, append zero
+- start from rhs, find a zero (counting the number of ones we see when going r → l)
+|--> when we have found a zero, set it to one. Set all ones on rhs to zero.
 
 
 '''
 
 
 class Solution:
-    def countBits(self, num):
+        # 'Slow' version
+    def countBitsS(self, num):
         if num == 0:
             return [0]
-            
+
         ans = [0] * (num+1)
 
         i = 1
@@ -109,9 +148,52 @@ class Solution:
 
         return ans
 
+        # Not sure if I have the time complexity correct here
+        # Thought it was o(n), however the number of adjustments we are making
+        # when adding in binary is based upon size of number, idk
+    def countBits_1(self, num):
+        # simulate addition in binary
+        repr = [0]
+        ones = 0
+        ans = [0]
+
+        for i in range(num):
+            if ones == len(repr):
+                repr = [1] + [0 for i in range(len(repr))]
+                ones = 1
+            else:
+                p = len(repr)-1
+                sub = 0
+
+                # find a zero
+                while repr[p] != 0:
+                    p -= 1
+                    sub += 1
+
+                # replace it with one
+                repr[p] = 1
+                ones += 1
+
+                if p != len(repr)-1:
+                    repr = repr[:p+1] + [0 for i in range(sub)]
+                    ones -= sub
+
+            ans.append(ones)
+
+        return ans
+
+    def countBits(self, num):
+        ans = [0]
+
+        for i in range(1, num+1):
+            if i % 2 == 0:
+                ans = ans[i>>1]
+            else:
+                ans = ans[i-1] + 1
+
 
 
 if __name__ == '__main__':
     s = Solution()
-
     print(s.countBits(2))
+    print(s.countBits(5))

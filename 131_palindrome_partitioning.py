@@ -1,38 +1,78 @@
 '''
-Given a string s, partition s ∋ every substring of
-the partition is a palindrome
+Given a string s, partition s s.t.
+every subtstring of the partition is a palindrome.
 
 Return all possible palindrome partitioning of s.
 
-Start on the lhs of the string.
-Keep track of the current substring that you are on.
-If the substring is a palindrome. You make the decision
-to either partition at that value, or to not to.
+The obvious solution is to have a list containing
+only single elements:
 
-(idx, sub, parition)
+"aab" → ["a", "a", "b"]
 
-Also have a helper function to tell us whether or not
-something is or is not a palindrome. Can't think of a
-good way to do this other than to go through all of the
-elements every time.
+"aaa" → ["a", "a", "a"]
 
-"aab"
+So let's start there.
 
-(0, "", [])
-not a palindrome
-itr(1, "a", [])
+However how do we build up?
 
-isPalindrome():
-    itr(2, "", ["a"])
-        itr(3, "b", ["a"])
+If every element (- last one), looks right and asks the
+question: Is this a palindrome? We would be able to build
+up.
 
-        itr(3, "", ["a", "b"])
+Hmmm maybe another function call after this initial split?
+Else we'd mess-up on edge case.
 
-itr(2, "a"+"a", [])
+So how about this:
+    - have a length of a palindrome that we are looking for
+    go l → r, if we find a pali, function call (recursion).
+    - do a function call to simulate what would happen if we
+    were to use that pali, however keep going.
+
+    after we find all palis of lenght 2, look for length 3,
+    4, ..., len(input)-1.
+
+If we start at all single-element palindromes and build up,
+we'll run into a scenario where we will double-count, which
+will result in us needing to use a set.
+
+If we instead create a palindrome bridge from l → r, we won't
+double count.
+
+Maybe we can create a data structure that answer the question of
+is s[i:j] a palindrome?
+
+Given an index in the string to look at, our current partition of
+the string, search for valid palis to complete our path.
+
 
 '''
-
+    # 12.14.20
 class Solution:
+    def partition(self, s):
+        ans = []
+        self.itr(s, ans, 0, [])
+        return ans
+
+        # p is our current partition
+    def itr(self, s, ans, idx, p):
+        if idx >= len(s):
+            ans.append(p)
+            return
+
+        for k in range(idx, len(s)):
+            subList = s[idx: k+1]
+            if subList[::] == subList[::-1]:
+                # Have valid pali
+                self.itr(s, ans, k+1, p+[subList])
+
+
+
+
+
+
+
+
+class Solution1:
     def partition(self, s):
 
         def isPalindrome(str):
@@ -82,4 +122,4 @@ class Solution:
 if __name__ == '__main__':
     s = Solution()
 
-    print(s.partition("aba"))
+    print(s.partition("a"))
