@@ -60,7 +60,7 @@ class Solution:
         return ans
 
     # 0(n)
-    def subarraySum(self, nums, k):
+    def subarraySum_2(self, nums, k):
         historic_sum = {0:1}
         ans = 0
         run = 0
@@ -72,11 +72,47 @@ class Solution:
 
         return ans
 
+    def subArraySum(self, nums, k):
+        arrSum = 0
+        currentSum = 0
+        d = {0:1}
+
+        for idx, val in enumerate(nums):
+            currentSum += val
+
+            if currentSum-k in d:
+                arrSum += d[currentSum-k]
+
+            if currentSum in d:
+                d[currentSum] += 1
+            else:
+                d[currentSum] = 1
+
+        return arrSum
+
+'''
+Update sum
+
+d[sum] = counter
+
+arrSum = 0
+sum = 2
+
+1 1 1 | k = 2
+  ^
+
+d = {
+    1:1
+    2:1
+    3:1
+}
+
+'''
 
 
 
-if __name__ == '__main__':
-    s = Solution()
-    print(s.subarraySum([1,1,1], 2))
-    print(s.subarraySum([1,2,3], 3))
-    print(s.subarraySum([], 3))
+
+s = Solution()
+print(s.subArraySum([1,1,1], 2))
+print(s.subArraySum([1,2,3], 3))
+print(s.subArraySum([], 3))

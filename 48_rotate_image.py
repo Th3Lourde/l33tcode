@@ -2,11 +2,19 @@
 
 
 class Solution:
+    def rotate(self, matrix):
+        matrix.reverse()
+
+        for r in range(len(matrix)):
+            for c in range(r):
+                matrix[r][c], matrix[c][r] = matrix[c][r], matrix[r][c]
+
+
     # God-Tier Solution
     # This dude just swapped the diags
     # I swapped every item one time more than needed
     # Kinda confused how this works. Come back later
-    def rotate(self, matrix):
+    def rotate_2(self, matrix):
         for i in range (len(matrix)):
             for j in range (i, len(matrix)):
                 # print("swap({},{})".format(matrix[i][j], matrix[j][i]))

@@ -1,70 +1,43 @@
-
-
 class Solution:
     def wordBreak(self, s, wordDict):
+        dp = [None for _ in range(len(s))]
+        words = set()
+        maxLength = 0
 
-        # d = {}
-        #
-        # for word in wordDict:
-        #     d[word] = True
-        #
-        # wordDict = d
+        for word in wordDict:
+            if len(word) > maxLength:
+                maxLength = len(word)
 
-        l = 0
-        r = len(s)
+            words.add(word)
 
-        while l != r:
-            try:
-                if wordDict[s[l:r]]:
-                    if r != len(s):
-                        l = r
-                        r = len(s)
+        def itr(i):
+            if i >= len(s):
+                return True
 
-                    elif r == len(s):
-                        return True
+            if dp[i] != None:
+                return dp[i]
 
-            except:
-                r -= 1
+            resp = False
 
-        print(s[l:])
+            for wordEnd in range(i+1, min(len(s), i+maxLength)+1):
+                subStr = s[i:wordEnd]
 
-        while l >= 0:
-            try:
-                ...
+                # print(subStr)
 
-            except:
-                l -= 1
+                if subStr in words:
+                    if itr(wordEnd):
+                        resp = True
+                        break
 
-        return False
+            dp[i] = resp
+            return dp[i]
 
+        return itr(0)
 
-if __name__ == '__main__':
-    s = Solution()
+s = Solution()
 
-    testCases = [
-        # ["a", {"a":True}, True],
-        # ["ab", {"a":True, "b":True}, True],
-        # ["applesz", {"apples":True}, False],
-        # ["leetcode", {"leet": True, "code":True}, True],
-        # ["catsandog", {"cats": True, "dog": True, "sand": True, "and": True, "cat": True}, False],
-        # ["applepenapple", {"apple": True, "pen": True}, True],
-
-        ["abcd", {"a": True, "abc": True, "b": True, "cd": True}, True],
-
-    ]
-
-    passed = True
-    z = 1
-
-    for testCase in testCases:
-        resp = s.wordBreak(testCase[0], testCase[1])
-
-        if resp != testCase[2]:
-            passed = False
-            print("[failed test case {}] wanted {} got {}".format(z, testCase[2], resp))
-            break
-
-        z += 1
-
-    if passed:
-        print("[passed all test cases] :)")
+print(s.wordBreak("leetcode", ["leet","code"])) # true
+print(s.wordBreak("applepenapple", ["apple","pen"])) # true
+print(s.wordBreak("applepenapple", ["apple","pen","applepen"])) # true
+print(s.wordBreak("catsandog", ["cats","dog","sand","and","cat"])) # false
+print(s.wordBreak("catsandog", ["cats","dog","sand","and","cat"])) # false

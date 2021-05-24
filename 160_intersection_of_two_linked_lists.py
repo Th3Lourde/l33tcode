@@ -8,9 +8,7 @@ link: https://leetcode.com/problems/intersection-of-two-linked-lists/discuss/497
 
 
 class Solution:
-
-
-    def getIntersectionNode(self, headA, headB):
+    def getIntersectionNode_1(self, headA, headB):
         if headA == None:
             return None
 
@@ -94,11 +92,7 @@ class Solution:
 
         return ans
 
-
-
-
-
-    def getIntersectionNode1(self, headA, headB):
+    def getIntersectionNode_2(self, headA, headB):
 
         if headA == None:
             return None
@@ -180,6 +174,33 @@ class Solution:
 
         return ans
 
+    def getIntersectionNode(self, headA, headB):
+        if headA == None or headB == None:
+            return None
+
+        node_a = headA
+        aLoop = 0
+        node_b = headB
+        bLoop = 0
+
+        while aLoop <= 2 and bLoop <= 2:
+            if node_a == node_b:
+                return node_a
+
+            if node_a.next == None:
+                node_a = headB
+                aLoop += 1
+
+            else:
+                node_a = node_a.next
+
+            if node_b.next == None:
+                node_b = headA
+                bLoop += 1
+            else:
+                node_b = node_b.next
+
+        return None
 
 class ListNode:
     def __init__(self, x):

@@ -1,9 +1,94 @@
+'''
+Given array nums of integers, find the maximum possible sum
+of elements of the array such that the array is divisible by three.
+
+Ok so all numbers are either divisble by one, two, or three.
+
+We care about creating the largest number that is divisble by
+three.
+
+If a number is not divisble by three it is either divisble by
+one or two.
+
+In order to make the number divisible by the correct value,
+we are either going to subtract the smallest 1, the smallest 2,
+or the two smallest ones.
+
+If the number is divisble by one, subtract the smallest one
+or the two smallest numbers divisble by two.
+
+If the number is divisible by two, subtract the smallest two
+or the two smallest numbers divisible by one.
+
+17 8 8
+
+16 2 2 7
+
+Run through list of numbers, adding them all up.
+Keep track of the two smallest ones, twos, then based
+upon what the number is divisble by, subtract an element.
+
+[3,6,5,1,8]
+         ^
+
+23
+
+ans = 9
+ones = [1]
+twos = [5, 8]
 
 '''
-Still working on problem
-'''
-
 class Solution:
+    def maxSumDivThree(self, nums):
+        ones = []
+        twos = []
+        ans = 0
+
+        def update(arr, x):
+            if len(arr) == 0:
+                arr.append(x)
+            elif len(arr) == 1:
+                if x < arr[0]:
+                    arr.insert(0, x)
+                else:
+                    arr.append(x)
+            else:
+                if x < arr[0]:
+                    arr[0], arr[1] = x, arr[0]
+                elif x < arr[1]:
+                    arr[1] = x
+
+        for n in nums:
+            ans += n
+
+            if n % 3 == 0:
+                continue
+            elif n % 3 == 1:
+                update(ones, n)
+            elif n % 3 == 2:
+                update(twos, n)
+
+        subtract = float('inf')
+
+        if ans % 3 == 0:
+            subtract = 0
+
+        elif ans % 3 == 1:
+            if len(ones) > 0: subtract = ones[0]
+            if len(twos) > 1: subtract = min(sum(twos), subtract)
+
+        elif ans % 3 == 2:
+            if len(twos) > 0: subtract  = twos[0]
+            if len(ones) > 1: subtract = min(sum(ones), subtract)
+
+        return ans - subtract
+
+
+
+
+
+
+
         # Does not work
     def maxSumDivThree_I(self, nums):
         def getTarget(currentElement):
@@ -89,7 +174,7 @@ class Solution:
 
         ans += newSum
 
-    def maxSumDivThree(self, nums):
+    def maxSumDivThree_1(self, nums):
         ans = 0
 
         ones = []

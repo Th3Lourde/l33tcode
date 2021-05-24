@@ -1,9 +1,5 @@
-
-
 class Solution:
-
-
-    def isPalindrome(self, s):
+    def isPalindrome_2(self, s):
 
         if s.strip() == "":
             return True
@@ -70,7 +66,7 @@ class Solution:
         return True
 
 
-    def isPalindrome1(self, s):
+    def isPalindrome_1(self, s):
         tmp = list(s)
 
         '''
@@ -145,41 +141,34 @@ class Solution:
         return True
 
 
+    def isPalindrome(self, s):
+        l = 0
+        r = len(s)-1
 
+        while l < r:
+            while l < r and not s[l].isalnum():
+                l += 1
 
+            while l < r and not s[r].isalnum():
+                r -= 1
 
+            if s[l].lower() != s[r].lower():
+                return False
 
+            l += 1
+            r -= 1
 
+        return True
 
+s = Solution()
 
+t1 = "A man, a plan, a canal: Panama"
+t1 = "tacocat"
 
+print(s.isPalindrome(t1))
 
+t2 = "race a car"
+print(s.isPalindrome(t2))
 
-
-
-
-
-
-if __name__ == '__main__':
-
-    '''
-    Ok so this is 'hard' not because we are
-    trying to figure out if a string is a
-    palindrome, but rather because converting
-    a string composed of non-alpha-numeric
-    characters to a string that only contains
-    alpha-numeric characters.
-    '''
-
-    s = Solution()
-
-    t1 = "A man, a plan, a canal: Panama"
-    # t1 = "tacocat"
-
-    # print(s.isPalindrome(t1))
-
-    t2 = "race a car"
-    # print(s.isPalindrome(t2))
-
-    t3 = "0P"
-    print(s.isPalindrome(t3))
+t3 = "0P"
+print(s.isPalindrome(t3))

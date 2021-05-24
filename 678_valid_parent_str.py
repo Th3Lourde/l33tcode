@@ -3,202 +3,101 @@
 "(())((())()()(*)(*()(())())())()()((()())((()))(*"
 
 "((*"
-'''
+
+"(((((*(()((((*((**(((()()*)()()()*((((**)())*)*)))))))(())(()))())((*()()(((()((()*(())*(()**)()(())"
+         ^
 
 
+p    = 6
+star = 1
+
+close stars can only be used for )
+open stars can be used for (
 
 class Solution:
-
     def checkValidString(self, s):
-        open = 0
-        close = 0
-        astrix = 0
-        gone = 0
-        stack = []
+        star = 0
+        p = 0
 
-        # Uses stack to test that the order is valid
         for e in s:
-
+            if e == "(":
+                p += 1
+            elif e == ")":
+                p -= 1
             if e == "*":
-                astrix += 1
+                star += 1
 
-            elif e == "(":
-                open += 1
+            if p < 0:
+                star  -= 1
+                p += 1
 
+        for e in range(p):
+            star -= 1
+
+        return star >= 0
+
+
+
+*******(((((((
+
+maintain list of indices that represent *'s
+also maintain a list of indices that represent '('
+
+After we finish our run-through, loop
+through '(' list. If there exists an '*' that can close
+the open '(' use it. Else return false.
+
+0123456789
+*((*()((*)
+ ^
+
+stars = [0]
+open = [1]
+
+'''
+
+# Prevent counting the lhs stars that won't
+# be able to be used b/c they can't close anything
+# have two sets of stars? One for closed, one for both?
+class Solution:
+    def checkValidString(self, s):
+        star = []
+        open = []
+
+        # Forward traversal
+        for idx, e in enumerate(s):
+            if e == "(":
+                open.append(idx)
             elif e == ")":
-                close += 1
-
-            if e == "(" or e == "*":
-                stack.append(e)
-
-            elif e == ")":
-                if len(stack) == 0:
+                if len(open) > 0:
+                    open.pop()
+                elif len(star) > 0:
+                    star.pop()
+                else:
                     return False
+            else:
+                star.append(idx)
 
-                r = stack.pop()
+        # Backwards traversal
+        for idx in reversed(open):
+            if len(star) <= 0:
+                return False
 
-                if r == "*":
-                    ...
+            if star[-1] > idx:
+                star.pop()
+            else:
+                return False
 
         return True
 
 
 
 
-    def checkValidString_5(self, s):
-        open = 0
-        close = 0
-        astrix = 0
-        gone = 0
-        stack = []
-
-        # Uses stack to test that the order is valid
-        for e in s:
-
-            if e == "*":
-                astrix += 1
-
-            elif e == "(":
-                open += 1
-
-            elif e == ")":
-                close += 1
-
-            if e == "(" or e == "*":
-                stack.append(e)
-
-            elif e == ")":
-                if len(stack) == 0:
-                    return False
-
-                r = stack.pop()
-
-                if r == "*":
-                    gone += 1
-
-        # Check there are not too many '('
-        if len(stack)-(astrix - gone) > astrix:
-            return False
-
-        # Check there are enough *
-        if max(open, close) - min(open, close) > astrix:
-            return False
-
-        return True
 
 
-
-    def checkValidString_4(self, s):
-        open = 0
-        astrix = 0
-        close = 0
-
-        for e in s:
-            if e == "(": open += 1
-            elif e == "*": astrix += 1
-            elif e == ")": close += 1
-
-        if max(open, close) - min(open, close) > astrix:
-            return False
-
-        return True
-
-
-    def checkValidString_3(self, s): # Let's actually solve the problem this time :)
-        astrix = 0                 # Better, doesn't work
-        gone = 0
-        stack = []
-
-        for e in s:
-            if e == "(" or e == "*":
-                stack.append(e)
-
-                if e == "*":
-                    astrix += 1
-
-            elif e == ")":
-                if len(stack) == 0:
-                    return False
-
-                r = stack.pop()
-
-                if r == "*":
-                    gone += 1
-
-        if len(stack)-(astrix - gone) > astrix:
-            return False
-
-        return True
-
-
-    def checkValidString_2(self, s): # we meant to solve the wrong problem this time :)
-        pCounter = [0,0,0]
-
-        for p in s:
-            if p == "(":
-                pCounter[0] += 1
-
-            elif p == "[":
-                pCounter[1] += 1
-
-            elif p == "{":
-                pCounter[2] += 1
-
-            elif p == "}":
-                pCounter[2] -= 1
-
-            elif p == "]":
-                pCounter[1] -= 1
-
-            elif p == ")":
-                pCounter[0] -= 1
-
-        if sum(pCounter) == 0:
-            return True
-
-        return False
-
-
-
-
-
-
-
-
-    def checkValidString_1(self, s): # solved the wrong problem :^D
-        s1 = [] # (
-        s2 = [] # [
-        s3 = [] # {
-
-        for p in s:
-            if p == "(":
-                s1.append('(')
-
-            elif p == "[":
-                s2.append('[')
-
-            elif p == "{":
-                s3.append("{")
-
-            elif p == "}":
-                try:
-                    s3.pop()
-
-                except:
-                    return False
-
-            elif p == ")":
-                try:
-                    s1.pop()
-
-                except:
-                    return False
-
-            elif p == "]":
-                try:
-                    s2.pop()
-
-                except:
-                    return False
-
-        return True
+s = Solution()
+print(s.checkValidString("((((*))")) # False
+print(s.checkValidString("()")) # True
+print(s.checkValidString("(*)")) # True
+print(s.checkValidString("(*))")) # True
+print(s.checkValidString("((*))")) # True

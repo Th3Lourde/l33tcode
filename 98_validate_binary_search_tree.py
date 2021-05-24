@@ -10,11 +10,22 @@ class Solution:
         if root == None:
             return True
 
+        def iterate(node, lessThan, greaterThan):
+            if not node:
+                return True
+
+            if node.val < lessThan and node.val > greaterThan:
+                return iterate(node.left, node.val, greaterThan) and iterate(node.right, lessThan, node.val)
+
+            return False
+
+
+        return iterate(root, float('inf'), float('-inf'))
         # return self.myValidBST(root, root.val, "n", {})
-        return self.myValidBST(root, None, None, {})
+        # return self.myValidBST(root, None, None, {})
 
 
-    def myValidBST(self, local_root, less, greater, unique):
+    def myValidBST_3(self, local_root, less, greater, unique):
         if local_root.left != None and local_root.right != None:
             if local_root.left.val < local_root.val and local_root.right.val > local_root.val:
                 try:

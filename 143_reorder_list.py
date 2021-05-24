@@ -44,13 +44,76 @@ itr = not itr
 
 '''
 
+def createLLFromList(arr):
+    if not arr:
+        return None
 
-class ListNode(self, val=0, next=None):
-    self.val = val
-    self.next = next
+    node = ListNode(arr[-1])
+
+    for i in range(len(arr)-2, -1, -1):
+        nextNode = ListNode(arr[i], node)
+        node = nextNode
+
+    return node
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+    def __repr__(self):
+        return "{}-->{}".format(self.val, self.next)
 
 class Solution:
     def reorderList(self, head):
+        slow = head
+        fast = head
+        previousSlow = slow
+
+        while fast:
+            fast = fast.next
+
+            if fast:
+                fast = fast.next
+
+            previousSlow = slow
+            slow = slow.next
+
+        # Reverse slow --> end
+        prev, node = None, slow
+
+        while node:
+            nextNode = node.next
+            node.next = prev
+            prev = node
+            node = nextNode
+
+        previousSlow.next = None
+
+        left = head
+        right = prev
+        lastNode = None
+
+        # print(left)
+        # print(right)
+
+        while right and left:
+            nextLeft = left.next
+            nextRight = right.next
+
+            lastNode = right
+
+            left.next = right
+            right.next = nextLeft
+
+            left = nextLeft
+            right = nextRight
+
+        return head
+
+
+    def reorderList_1(self, head):
 
         if not head: return head
 
@@ -88,3 +151,16 @@ class Solution:
             itr = not itr
 
         return ans
+
+'''
+1 --> 2 --> 3 --> 4
+l
+
+
+'''
+
+s = Solution()
+
+linkedList = createLLFromList([1,2,3,4,5])
+
+print(s.reorderList(linkedList))

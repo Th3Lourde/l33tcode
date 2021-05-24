@@ -1,7 +1,7 @@
 
 
 class Solution:
-    def isValid(self, s):
+    def isValid_1(self, s):
         stack = []
 
         swap = {")":"(", "]":"[", "}":"{"}
@@ -21,6 +21,26 @@ class Solution:
             return False
 
         return True
+
+    def isValid(self, s):
+        stack = []
+        closeMapping = {
+            ")": "(",
+            "}": "{",
+            "]": "[",
+        }
+
+        for chr in s:
+            if chr == "(" or chr == "{" or chr == "[":
+                stack.append(chr)
+
+            else:
+                if len(stack) == 0 or stack[-1] != closeMapping[chr]:
+                    return False
+                stack.pop()
+
+        return len(stack) == 0
+
 
 
 if __name__ == '__main__':
@@ -64,10 +84,10 @@ if __name__ == '__main__':
         ["{()}]", False],
         ["[{()}]", True],
 
-        ["(*)", True],
-        ["{(*)}", True],
-        ["[{(*)}]", True],
-        ["[{(*))}]", False],
+        # ["(*)", True],
+        # ["{(*)}", True],
+        # ["[{(*)}]", True],
+        # ["[{(*))}]", False],
 
     ]
 

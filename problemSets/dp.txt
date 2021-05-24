@@ -1,3 +1,6 @@
+Revisit:
+https://leetcode.com/contest/weekly-contest-229/problems/maximum-score-from-performing-multiplication-operations/
+https://leetcode.com/contest/weekly-contest-229/problems/maximize-palindrome-length-from-subsequences/
 
 Linear:                                                                                             Status:
 https://leetcode.com/problems/climbing-stairs/                                                      (DONE)
@@ -9,22 +12,22 @@ https://leetcode.com/problems/unique-binary-search-trees/                       
 https://leetcode.com/problems/house-robber/                                                         (DONE)
 https://leetcode.com/problems/perfect-squares/                                                      (DONE) <-- Gives TLE for DP
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/                        (DONE) Revisit
-https://leetcode.com/problems/coin-change/
-https://leetcode.com/problems/counting-bits/
-https://leetcode.com/problems/integer-break/
-https://leetcode.com/problems/count-numbers-with-unique-digits/
-https://leetcode.com/problems/wiggle-subsequence/
-https://leetcode.com/problems/partition-equal-subset-sum/
-https://leetcode.com/problems/maximum-length-of-pair-chain/
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
-https://leetcode.com/problems/delete-and-earn/
-https://leetcode.com/problems/domino-and-tromino-tiling/
-https://leetcode.com/problems/knight-dialer/
-https://leetcode.com/problems/minimum-cost-for-tickets/
-https://leetcode.com/problems/partition-array-for-maximum-sum/
-https://leetcode.com/problems/filling-bookcase-shelves/
-https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference/
-https://leetcode.com/problems/greatest-sum-divisible-by-three/
+https://leetcode.com/problems/coin-change/                                                          (DONE)
+https://leetcode.com/problems/counting-bits/                                                        (DONE)
+https://leetcode.com/problems/integer-break/                                                        (DONE)
+https://leetcode.com/problems/count-numbers-with-unique-digits/                                     (DONE)
+https://leetcode.com/problems/wiggle-subsequence/                                                   (DONE)
+https://leetcode.com/problems/partition-equal-subset-sum/                                           (DONE)
+https://leetcode.com/problems/maximum-length-of-pair-chain/                                         (DONE)
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/                 (DONE) Revisit (these stock problems are unique, which can make them more difficult)
+https://leetcode.com/problems/delete-and-earn/                                                      (DONE)
+https://leetcode.com/problems/domino-and-tromino-tiling/                                            (DONE) Holy fuck difficult
+https://leetcode.com/problems/knight-dialer/                                                        (DONE)
+https://leetcode.com/problems/minimum-cost-for-tickets/                                             (DONE)
+https://leetcode.com/problems/partition-array-for-maximum-sum/                                      (DONE)
+https://leetcode.com/problems/filling-bookcase-shelves/                                             (DONE)
+https://leetcode.com/problems/longest-arithmetic-subsequence-of-given-difference/                   (DONE)
+https://leetcode.com/problems/greatest-sum-divisible-by-three/                                      (DONE)
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 https://leetcode.com/problems/student-attendance-record-ii/
 https://leetcode.com/problems/decode-ways-ii/

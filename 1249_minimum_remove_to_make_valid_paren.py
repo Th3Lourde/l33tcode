@@ -25,8 +25,7 @@ class Solution:
 
         return ans_s
 
-
-    def minRemoveToMakeValid(self, s):
+    def minRemoveToMakeValid_2(self, s):
         skip = set()
         count = 0
 
@@ -56,6 +55,29 @@ class Solution:
 
         return ans
 
+    def minRemoveToMakeValid(self, s):
+        remove = set()
+        open = []
+
+        for idx, chr in enumerate(s):
+            if chr == "(":
+                open.append(idx)
+            elif chr == ")":
+                if open:
+                    open.pop()
+                else:
+                    remove.add(idx)
+
+        for idx in open:
+            remove.add(idx)
+
+        valid = ""
+
+        for idx, chr in enumerate(s):
+            if idx not in remove:
+                valid += chr
+
+        return valid
 
 if __name__ == '__main__':
     s = Solution()
