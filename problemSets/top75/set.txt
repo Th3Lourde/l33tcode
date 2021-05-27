@@ -1,32 +1,23 @@
 Array
-
 (done) https://leetcode.com/problems/two-sum/
 (done) https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 (done) https://leetcode.com/problems/contains-duplicate/
 (done) https://leetcode.com/problems/product-of-array-except-self/
 (done) https://leetcode.com/problems/maximum-subarray/
-
-
 (rev)  https://leetcode.com/problems/maximum-product-subarray/
 (rev)  https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 (done) https://leetcode.com/problems/search-in-rotated-sorted-array/
 (rev)  https://leetcode.com/problems/3sum/
 (rev)  https://leetcode.com/problems/container-with-most-water/
 
----
-
 Binary (later? Never?)
-
-- Sum of Two Integers - https://leetcode.com/problems/sum-of-two-integers/
-- Number of 1 Bits - https://leetcode.com/problems/number-of-1-bits/
-- Counting Bits - https://leetcode.com/problems/counting-bits/
-- Missing Number - https://leetcode.com/problems/missing-number/
-- Reverse Bits - https://leetcode.com/problems/reverse-bits/
-
----
+https://leetcode.com/problems/sum-of-two-integers/
+https://leetcode.com/problems/number-of-1-bits/
+https://leetcode.com/problems/counting-bits/
+https://leetcode.com/problems/missing-number/
+https://leetcode.com/problems/reverse-bits/
 
 Dynamic Programming
-
 (done) https://leetcode.com/problems/climbing-stairs/
 (done) https://leetcode.com/problems/coin-change/
 (done) https://leetcode.com/problems/longest-increasing-subsequence/
@@ -39,10 +30,7 @@ Dynamic Programming
 (done) https://leetcode.com/problems/unique-paths/
 (revi) https://leetcode.com/problems/jump-game/
 
----
-
 Graph
-
 (done) https://leetcode.com/problems/clone-graph/
 (done) https://leetcode.com/problems/course-schedule/
 (rev/t) https://leetcode.com/problems/pacific-atlantic-water-flow/
@@ -52,20 +40,14 @@ https://leetcode.com/problems/alien-dictionary/
 https://leetcode.com/problems/graph-valid-tree/
 https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
 
----
-
 Interval
-
 https://leetcode.com/problems/insert-interval/
 https://leetcode.com/problems/merge-intervals/
 https://leetcode.com/problems/non-overlapping-intervals/
 https://leetcode.com/problems/meeting-rooms/
 https://leetcode.com/problems/meeting-rooms-ii/
 
----
-
 Linked List
-
 https://leetcode.com/problems/reverse-linked-list/
 https://leetcode.com/problems/linked-list-cycle/
 https://leetcode.com/problems/merge-two-sorted-lists/
@@ -73,34 +55,25 @@ https://leetcode.com/problems/merge-k-sorted-lists/
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 https://leetcode.com/problems/reorder-list/
 
----
-
 Matrix
-
 (done) https://leetcode.com/problems/set-matrix-zeroes/
 (done) https://leetcode.com/problems/spiral-matrix/
 https://leetcode.com/problems/rotate-image/
 https://leetcode.com/problems/word-search/
 
----
-
 String
-
 (done) https://leetcode.com/problems/longest-substring-without-repeating-characters/
 (slop) https://leetcode.com/problems/longest-repeating-character-replacement/
-https://leetcode.com/problems/minimum-window-substring/
-https://leetcode.com/problems/valid-anagram/
-https://leetcode.com/problems/group-anagrams/
-https://leetcode.com/problems/valid-parentheses/
-https://leetcode.com/problems/valid-palindrome/
+(done) https://leetcode.com/problems/minimum-window-substring/
+(done) https://leetcode.com/problems/valid-anagram/
+(revi) https://leetcode.com/problems/group-anagrams/
+(done) https://leetcode.com/problems/valid-parentheses/
+(done) https://leetcode.com/problems/valid-palindrome/
 https://leetcode.com/problems/longest-palindromic-substring/
 https://leetcode.com/problems/palindromic-substrings/
 https://leetcode.com/problems/encode-and-decode-strings/
 
----
-
 Tree
-
 (done) https://leetcode.com/problems/maximum-depth-of-binary-tree/
 (done) https://leetcode.com/problems/same-tree/
 (done) https://leetcode.com/problems/invert-binary-tree/
@@ -113,13 +86,10 @@ Tree
 (done) https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 (done) https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 (done) https://leetcode.com/problems/implement-trie-prefix-tree/
-https://leetcode.com/problems/add-and-search-word-data-structure-design/
-https://leetcode.com/problems/word-search-ii/
-
----
+(done) https://leetcode.com/problems/add-and-search-word-data-structure-design/
+(rev)  https://leetcode.com/problems/word-search-ii/
 
 Heap
-
 (done) https://leetcode.com/problems/merge-k-sorted-lists/
 (done) https://leetcode.com/problems/top-k-frequent-elements/
 (rev) https://leetcode.com/problems/find-median-from-data-stream/

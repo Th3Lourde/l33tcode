@@ -1,0 +1,10 @@
+Things I should be able to rattle off easily:
+heap implementation
+trie implementation
+binary search
+merge sort
+quick sort
+dfs
+bfs
+dp
+next lexicographically

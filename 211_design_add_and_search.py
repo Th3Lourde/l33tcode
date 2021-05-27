@@ -1,5 +1,3 @@
-from collections import deque
-
 class TrieNode:
     def __init__(self):
         self.children = {}
@@ -8,7 +6,7 @@ class TrieNode:
     def __repr__(self):
         return "{}".format(str(self.children))
 
-class Trie:
+class WordDictionary:
     def __init__(self):
         self.root = TrieNode()
 
@@ -20,45 +18,22 @@ class Trie:
 
         root.endNode = True
 
-class WordDictionary:
-
-    def __init__(self):
-        self.trie = Trie()
-
-    def addWord(self, word):
-        self.trie.addWord(word)
-
     def search(self, word):
-        node = self.trie.root
+        def dfs(node, i):
+            if i == len(word):
+                return node.endNode
 
-        q = deque()
-        q.append((node, 0))
+            if word[i] == ".":
+                for child in node.children:
+                    if dfs(node.children[child], i+1):
+                        return True
 
-        while q:
-            trieNode, idx = q.popleft()
+            if word[i] in node.children:
+                return dfs(node.children[word[i]], i+1)
 
-            if idx >= len(word):
-                if trieNode.endNode:
-                    return True
+            return False
 
-                continue
-
-            # print(word[idx])
-            #
-            # print(trieNode.children)
-
-            nextChr = word[idx]
-
-            if word[idx] == ".":
-                nextChr = "abcdefghijklmnopqrstuvwxyz"
-
-            for chr in list(nextChr):
-                if chr not in trieNode.children or trieNode.endNode:
-                    continue
-
-                q.append((trieNode.children[chr], idx+1))
-
-        return False
+        return dfs(self.root, 0)
 
 
 
@@ -108,6 +83,29 @@ class WordDictionary_1:
 
 wd = WordDictionary()
 
+
+["WordDictionary","addWord","addWord","addWord","addWord","addWord","addWord","addWord","addWord","search","search","search","search","search","search","search","search","search","search"]
+[[],["ran"],["rune"],["runner"],["runs"],["add"],["adds"],["adder"],["addee"],["r.n"],["ru.n.e"],["add"],["add."],["adde."],[".an."],["...s"],["....e."],["......."],["..n.r"]]
+
+wd.addWord("rune")
+wd.addWord("runner")
+wd.addWord("runs")
+wd.addWord("add")
+wd.addWord("adds")
+wd.addWord("adder")
+wd.addWord("addee")
+
+wd.search("r.n") # True
+wd.search("ru.n.e") # False
+wd.search("add") # True
+wd.search("add.") # True
+wd.search("adde.") # True
+wd.search(".an.")
+wd.search("...s")
+wd.search("....e.")
+wd.search(".......")
+wd.search("..n.r")
+
 wd.addWord("bad")
 wd.addWord("dad")
 wd.addWord("mad")
@@ -117,3 +115,4 @@ wd.search(".ad") # True
 wd.search("b..") # True
 wd.search("...") # True
 wd.search("....") # False
+wd.search("..") # False
