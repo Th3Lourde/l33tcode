@@ -1,0 +1,6 @@
+How to tell if a number is negative:
+(a >> 31) & 1 [for 32bit integers]
+
+How to flip the sign of a number (bit)
+mask = 0xffffffff
+~(a^mask)

@@ -11,8 +11,8 @@ Array
 (rev)  https://leetcode.com/problems/container-with-most-water/
 
 Binary (later? Never?)
-https://leetcode.com/problems/sum-of-two-integers/
-https://leetcode.com/problems/number-of-1-bits/
+(rev) https://leetcode.com/problems/sum-of-two-integers/ | https://leetcode.com/problems/sum-of-two-integers/discuss/776952/Python-BEST-LeetCode-371-Explanation-for-Python
+(done) https://leetcode.com/problems/number-of-1-bits/
 https://leetcode.com/problems/counting-bits/
 https://leetcode.com/problems/missing-number/
 https://leetcode.com/problems/reverse-bits/
@@ -36,30 +36,30 @@ Graph
 (rev/t) https://leetcode.com/problems/pacific-atlantic-water-flow/
 (done) https://leetcode.com/problems/number-of-islands/
 (done) https://leetcode.com/problems/longest-consecutive-sequence/
-https://leetcode.com/problems/alien-dictionary/
-https://leetcode.com/problems/graph-valid-tree/
-https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
+(prem) https://leetcode.com/problems/alien-dictionary/
+(prem) https://leetcode.com/problems/graph-valid-tree/
+(prem) https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
 
 Interval
-https://leetcode.com/problems/insert-interval/
-https://leetcode.com/problems/merge-intervals/
-https://leetcode.com/problems/non-overlapping-intervals/
-https://leetcode.com/problems/meeting-rooms/
-https://leetcode.com/problems/meeting-rooms-ii/
+(done) https://leetcode.com/problems/insert-interval/
+(done) https://leetcode.com/problems/merge-intervals/
+(done) https://leetcode.com/problems/non-overlapping-intervals/
+(prem) https://leetcode.com/problems/meeting-rooms/
+(prem) https://leetcode.com/problems/meeting-rooms-ii/
 
 Linked List
-https://leetcode.com/problems/reverse-linked-list/
-https://leetcode.com/problems/linked-list-cycle/
-https://leetcode.com/problems/merge-two-sorted-lists/
-https://leetcode.com/problems/merge-k-sorted-lists/
-https://leetcode.com/problems/remove-nth-node-from-end-of-list/
-https://leetcode.com/problems/reorder-list/
+(done) https://leetcode.com/problems/reverse-linked-list/
+(done) https://leetcode.com/problems/linked-list-cycle/
+(done) https://leetcode.com/problems/merge-two-sorted-lists/
+(done) https://leetcode.com/problems/merge-k-sorted-lists/
+(done) https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+(done) https://leetcode.com/problems/reorder-list/
 
 Matrix
 (done) https://leetcode.com/problems/set-matrix-zeroes/
 (done) https://leetcode.com/problems/spiral-matrix/
-https://leetcode.com/problems/rotate-image/
-https://leetcode.com/problems/word-search/
+(done) https://leetcode.com/problems/rotate-image/
+(done) https://leetcode.com/problems/word-search/
 
 String
 (done) https://leetcode.com/problems/longest-substring-without-repeating-characters/
@@ -69,9 +69,9 @@ String
 (revi) https://leetcode.com/problems/group-anagrams/
 (done) https://leetcode.com/problems/valid-parentheses/
 (done) https://leetcode.com/problems/valid-palindrome/
-https://leetcode.com/problems/longest-palindromic-substring/
-https://leetcode.com/problems/palindromic-substrings/
-https://leetcode.com/problems/encode-and-decode-strings/
+(done) https://leetcode.com/problems/longest-palindromic-substring/
+(done) https://leetcode.com/problems/palindromic-substrings/
+(prem) https://leetcode.com/problems/encode-and-decode-strings/
 
 Tree
 (done) https://leetcode.com/problems/maximum-depth-of-binary-tree/

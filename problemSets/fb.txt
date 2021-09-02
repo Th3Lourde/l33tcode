@@ -1,0 +1,18 @@
+Ok so we are going to interview in a couple of years. We are aiming
+for facebook. What is going to make it or break it for us is our ability
+to code.
+
+Specifically how quickly and how correctly we can code.
+In order to meet the mark we are going to do two things:
+
+1) Be able to do top75 blind questions
+2) All of the fb tagged lc questions
+
+Let's start with top75 questions first. Before that we should
+finish out previous attempt at doing all of the questions.
+
+After we finish out previous attempt, redo the questions again.
+Once we can get all of them correct and implemented within 10-15mins,
+move on to the fb tagged questions
+
+https://leetcode.com/discuss/interview-question/1376426/facebook-interview-questions-july-2020-july-2021
