@@ -1,0 +1,70 @@
+Ok so I guess it's time to learn binary.
+
+What should I spend time learning?
+Well I should probably be able to do the problems
+
+I should also learn the different binary operations:
+We have 6 operations:
+>>
+<<
+7
+|
+~
+^
+
+>>:
+x << y
+Returns x with the bits shifted to the left by y places
+The new bits that are added are zeros
+This is the same as multiplying x by 2**y
+
+x >> y:
+Return x with the bits shifted to the right by y places.
+This is the same as //'ing x by 2**y
+
+x & y:
+Performs a "bitwise and". In the outputted binary digit,
+a one exists at a location if and only if the corresponding bit
+of x and y is 1. Else it is a zero
+
+x | y:
+Performs a "bitwise or". In the outputted binary digit,
+a zero exists at a location if and only if the corresponding bit
+of x and y is 0. Else it is a one.
+
+~x:
+Everywhere you see a zero put a one, everywhere you see a one put a zero.
+This is the same as -x-1
+
+x^y:
+Does a "bitwise exclusive or". Each bit of the output is the same as the corresponding
+bit in x if that bit in y is 0. If the bit in y is one, the output bit is the complement
+of x
+
+For each bit in x,y:
+The output bit is the same as the bit in x iff the bit in y is zero.
+The output bit is the complement of the bit in x iff the bit in y is one.
+
+https://leetcode.com/problems/sum-of-two-integers/discuss/84278/A-summary%3A-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently
+
+1010101010 ^ 1110001110
+
+1010101010
+1110001110
+
+5 --> 101
+4 --> 100
+
+101 ^ 100
+
+101
+100
+=
+001
+
+10 ^ 11
+
+1010
+1001
+=
+0011
