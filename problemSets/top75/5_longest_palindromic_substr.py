@@ -1,39 +1,68 @@
 '''
 Given a string s, return the longest palindromic substring in s.
 
-0(n²) --> Two pointer, check if each pointer is a valid palindrome
+1:
+Start with sliding window, find all of the largest palindromes
 
-What if I started at the middle and then worked up from there?
+length: 3
 
-Cause if I find a palindrome of a certain length I know it will be
-the biggest palindrome that I can find.
+01234
+babad
+  ---
 
- 01234
-"babad"
+What is the time complexity for each iteration?
+len(str)-potentialPaliLength+1
 
-chrToIdx = {
-    "b" : [0,2]
-    "a" : [1,3]
-    "d" : [4]
-}
+Worst Case: how many iterations?
 
-Bottom-Up DP:
+n-(n-1) + n-(n-2) + n-(n-3) + n-(n-4) + ... + n-(n-2)
 
-dp[start][end] == Palindrome
+Exponential TC
+Constant    SC
 
- 01234
-"babad"
+So this is actually a valid solution, however I
+think we could do better.
 
--|0|1|2|3|4
-0|T|T|T|T|T
-1| | | | |
-2| | | | |
-3| | | | |
-4| | | | |
-
-
+You can also start from the middle and work outwards,
+kinda the opposite of the solution that I came up with.
 '''
 
 class Solution:
     def longestPalindrome(self, s):
-        ...
+        def longestPali(l,r,odd):
+            pali = ""
+
+            if odd:
+                pali = s[l+1]
+
+            while 0 <= l and r < len(s) and s[l] == s[r]:
+                pali = s[l] + pali + s[r]
+                l -= 1
+                r += 1
+
+            return pali
+
+        resp = ""
+
+        if len(s) <= 1:
+            return s
+
+        for i in range(len(s)):
+            l1 = longestPali(i,i+1,False)
+            l2 = ""
+
+            if i > 0:
+                l2 = longestPali(i-1,i+1,True)
+
+            if len(l1) > len(resp) and len(l1) > len(l2):
+                resp = l1
+            elif len(l2) > len(resp) and len(l2) > len(l1):
+                resp = l2
+
+        return resp
+
+print(Solution().longestPalindrome("babad")) #bab
+print(Solution().longestPalindrome("cbbd")) #bb
+print(Solution().longestPalindrome("a")) #a
+print(Solution().longestPalindrome("")) #""
+print(Solution().longestPalindrome("ac")) #""
