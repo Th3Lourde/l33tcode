@@ -1,0 +1,2 @@
+Next Lexicographical Element:
+https://leetcode.com/problems/next-permutation/discuss/13907/Easy-python-solution-based-on-lexicographical-permutation-algorithm

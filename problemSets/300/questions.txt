@@ -1,0 +1,114 @@
+Composition of:
+https://leetcode.com/problem-list/wpwgkgt/
+https://leetcode.com/problem-list/79h8rn6/
+https://leetcode.com/problem-list/7p59281/
+https://leetcode.com/company/uber/
+https://leetcode.com/company/lyft/
+blind top 75
+
+Eventually:
+https://leetcode.com/problem-list/552y65ke/
+
+Top Interview Questions
+
+
+Blind top 75
+
+Array
+(done) https://leetcode.com/problems/two-sum/
+(done) https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+(done) https://leetcode.com/problems/contains-duplicate/
+(done) https://leetcode.com/problems/product-of-array-except-self/
+(done) https://leetcode.com/problems/maximum-subarray/
+(rev)  https://leetcode.com/problems/maximum-product-subarray/
+(rev)  https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+(done) https://leetcode.com/problems/search-in-rotated-sorted-array/
+(rev)  https://leetcode.com/problems/3sum/
+(rev)  https://leetcode.com/problems/container-with-most-water/
+
+Binary (later? Never?)
+(rev) https://leetcode.com/problems/sum-of-two-integers/ | https://leetcode.com/problems/sum-of-two-integers/discuss/776952/Python-BEST-LeetCode-371-Explanation-for-Python
+(done) https://leetcode.com/problems/number-of-1-bits/
+(done) https://leetcode.com/problems/counting-bits/
+(done) https://leetcode.com/problems/missing-number/
+(rev)  https://leetcode.com/problems/reverse-bits/
+
+Dynamic Programming
+(done) https://leetcode.com/problems/climbing-stairs/
+(done) https://leetcode.com/problems/coin-change/
+(done) https://leetcode.com/problems/longest-increasing-subsequence/
+(done) https://leetcode.com/problems/longest-consecutive-sequence/submissions/
+(done) https://leetcode.com/problems/word-break/
+(done) https://leetcode.com/problems/combination-sum-iv/
+(done) https://leetcode.com/problems/house-robber/
+(tired)https://leetcode.com/problems/house-robber-ii/
+(done) https://leetcode.com/problems/decode-ways/
+(done) https://leetcode.com/problems/unique-paths/
+(revi) https://leetcode.com/problems/jump-game/
+
+Graph
+(done) https://leetcode.com/problems/clone-graph/
+(done) https://leetcode.com/problems/course-schedule/
+(rev/t) https://leetcode.com/problems/pacific-atlantic-water-flow/
+(done) https://leetcode.com/problems/number-of-islands/
+(done) https://leetcode.com/problems/longest-consecutive-sequence/
+(prem) https://leetcode.com/problems/alien-dictionary/
+(prem) https://leetcode.com/problems/graph-valid-tree/
+(prem) https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
+
+Interval
+(done) https://leetcode.com/problems/insert-interval/
+(done) https://leetcode.com/problems/merge-intervals/
+(done) https://leetcode.com/problems/non-overlapping-intervals/
+(prem) https://leetcode.com/problems/meeting-rooms/
+(prem) https://leetcode.com/problems/meeting-rooms-ii/
+
+Linked List
+(done) https://leetcode.com/problems/reverse-linked-list/
+(done) https://leetcode.com/problems/linked-list-cycle/
+(done) https://leetcode.com/problems/merge-two-sorted-lists/
+(done) https://leetcode.com/problems/merge-k-sorted-lists/
+(done) https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+(done) https://leetcode.com/problems/reorder-list/
+
+Matrix
+(done) https://leetcode.com/problems/set-matrix-zeroes/
+(done) https://leetcode.com/problems/spiral-matrix/
+(done) https://leetcode.com/problems/rotate-image/
+(done) https://leetcode.com/problems/word-search/
+
+String
+(done) https://leetcode.com/problems/longest-substring-without-repeating-characters/
+(slop) https://leetcode.com/problems/longest-repeating-character-replacement/
+(done) https://leetcode.com/problems/minimum-window-substring/
+(done) https://leetcode.com/problems/valid-anagram/
+(revi) https://leetcode.com/problems/group-anagrams/
+(done) https://leetcode.com/problems/valid-parentheses/
+(done) https://leetcode.com/problems/valid-palindrome/
+(done) https://leetcode.com/problems/longest-palindromic-substring/
+(done) https://leetcode.com/problems/palindromic-substrings/
+(prem) https://leetcode.com/problems/encode-and-decode-strings/
+
+Tree
+(done) https://leetcode.com/problems/maximum-depth-of-binary-tree/
+(done) https://leetcode.com/problems/same-tree/
+(done) https://leetcode.com/problems/invert-binary-tree/
+(rev)  https://leetcode.com/problems/binary-tree-maximum-path-sum/
+(done) https://leetcode.com/problems/binary-tree-level-order-traversal/
+(rev)  https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+(done) https://leetcode.com/problems/subtree-of-another-tree/
+(rev) https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+(done) https://leetcode.com/problems/validate-binary-search-tree/
+(done) https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+(done) https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
+(done) https://leetcode.com/problems/implement-trie-prefix-tree/
+(done) https://leetcode.com/problems/add-and-search-word-data-structure-design/
+(rev)  https://leetcode.com/problems/word-search-ii/
+
+Heap
+(done) https://leetcode.com/problems/merge-k-sorted-lists/
+(done) https://leetcode.com/problems/top-k-frequent-elements/
+(rev) https://leetcode.com/problems/find-median-from-data-stream/
+
+Other:
+https://leetcode.com/problems/remove-invalid-parentheses/

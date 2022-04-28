@@ -68,3 +68,13 @@ https://leetcode.com/problems/sum-of-two-integers/discuss/84278/A-summary%3A-how
 1001
 =
 0011
+
+How to check if a number ends with a one in its binary
+representation:
+a&1
+
+How to get the negative version of a number:
+
+mask = 0xffffffff
+
+~(a^mask)

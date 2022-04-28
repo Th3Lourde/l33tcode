@@ -8,3 +8,9 @@ dfs
 bfs
 dp
 next lexicographically
+
+
+Min spanning tree
+
+I should probably have a list of ds/algos that I should have memorized
+that I can implement quickly/correctly.

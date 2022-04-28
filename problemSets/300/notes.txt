@@ -1,0 +1,30 @@
+Ok so we hit 500 problems. Great.
+
+Target Companies:
+- facebook
+- snapchat
+- lyft
+- uber
+- google
+- apple
+- adobe
+- stripe
+- twitter
+
+Time to get lc premium and start working on being able to nail:
+- blind top 75 questions
+- top 100 liked leetcode questions
+- top 100 snap questions
+- top 100 facebook questions
+- top 100 lyft questions
+- top 100 uber questions
+
+
+2hrs/day
+sun: mock
+sat: comp
+
+When should I do assessments?
+
+hr1 --> easy/medium questions from lists
+hr2 --> hard question from lists

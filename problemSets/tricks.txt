@@ -1,3 +1,5 @@
+
+
 t.sort(key=lambda x: x[0])
 
 def makeLL(arr):
@@ -9,3 +11,5 @@ def makeLL(arr):
         node = node.next
 
     return head
+
+int("0b232", 2) --> binary to int

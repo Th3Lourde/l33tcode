@@ -1,0 +1,7 @@
+Set:
+
+List:
+
+Dict:
+- Read: 0(1)
+- Del: 0(1)

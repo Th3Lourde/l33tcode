@@ -1,0 +1,4 @@
+https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/discuss/198633/Python-One-Pass-Time-O(N)-Space-O(1)
+
+Why does this make sense?
+Figure it out, submit, move on.

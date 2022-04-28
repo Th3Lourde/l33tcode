@@ -5,40 +5,34 @@ class TreeNode:
         self.left = left
         self.right = right
 
-'''
-Check if root exists, return as is appropriate
-
-node = root
-
-if node.val == root: return root
-
-elif node.val < root: node = node.right
-
-elif node.val > root: node = node.left
-
-do while node
-
-if we get outside of while loop, return None
-
 
 '''
+Given a root of a binary tree
+and a target value
 
+Find and return the node with a value of val
+If such a node does not exist, return None
+'''
+
+from collections import deque
 
 class Solution:
     def searchBST(self, root, val):
-        if not root:
+        if root == None:
             return None
 
-        node = root
+        q = deque([root])
 
-        while node:
+        while q:
+            node = q.pop()
+
             if node.val == val:
                 return node
 
-            elif node.val > val:
-                node = node.left
+            if node.left:
+                q.appendleft(node.left)
 
-            elif node.val < val:
-                node = node.right
+            if node.right:
+                q.appendleft(node.right)
 
         return None

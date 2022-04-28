@@ -1,0 +1,14 @@
+301 https://leetcode.com/problems/remove-invalid-parentheses/discuss/696750/Python-Backtracking-solution-detailed-explanation
+
+https://leetcode.com/problems/next-permutation/discuss/13907/Easy-python-solution-based-on-lexicographical-permutation-algorithm
+
+https://leetcode.com/problems/making-a-large-island/discuss/127032/C%2B%2BJavaPython-Straight-Forward-O(N2)-with-Explanations
+
+https://leetcode.com/problems/powx-n/discuss/738830/Python-recursive-O(log-n)-solution-explained
+
+https://leetcode.com/problems/shortest-distance-from-all-buildings/discuss/829587/Python%3A-BFS-solution-%2B-Comments
+
+https://leetcode.com/problems/expression-add-operators/discuss/572099/C%2B%2BJavaPython-Backtracking-and-Evaluate-on-the-fly-Clean-and-Concise
+
+
+https://leetcode.com/problems/merge-k-sorted-lists/discuss/10511/10-line-python-solution-with-priority-queue

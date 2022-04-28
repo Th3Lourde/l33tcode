@@ -1,76 +1,62 @@
 '''
-Given an integer nums sorted in an increasing order:
-return an array of the squares of each number sorted in increasing order
-
-[-4,-1,0,3,10]
-
-So what we want to do is sort by abs value instead of by value.
-
-If there are positive numbers, we want to sort by mag.
-If there are not positive numbers, just flip the order and square
-everything.
-
-If the first term is >= 0, then case two
-
-Case 0:
-First term is positive, just square everything, return
-
-Case 1:
-First term is neg, nothing is >= 0, flip list, square, return
-
-Case 2:
-We have a mix of positive and negative values
-1) Find the first val >= 0
-2) Then use a two pointer approach to sort by abs(x)
-3) Then square everything and return
-
+Ok if we don't have negative numbers, we don't need to
+worry about anyhting
 '''
+
 
 class Solution:
     def sortedSquares(self, nums):
-        # First figure out what case we have
         if nums[0] >= 0:
-            # square everything and return
-            for i in range(len(nums)):
-                nums[i] = nums[i]**2
+            for idx in range(len(nums)):
+                nums[idx] *= nums[idx]
+
             return nums
 
         elif nums[-1] < 0:
-            # reverse list, square everything, return
-            nums = nums[::-1]
-            for i in range(len(nums)):
-                nums[i] = nums[i]**2
-            return nums
+            for idx in range(len(nums)):
+                nums[idx] *= nums[idx]
+
+            return nums[::-1]
+
+
         else:
-            # We have a neg and a pos
-            # sort by abs(x)
+            # Find the point where the positive numbers start
+            p2 = 0
 
-            p1 = 0
-            p2 = len(nums)-1
+            while p2 < len(nums) and nums[p2] < 0:
+                p2 += 1
 
-            i = 0
-            while nums[i] < 0:
-                i += 1
+            p1 = p2-1
 
-            while p1 <= i:
-                if nums[p2-1] <= abs(nums[p1]) <= nums[p2]:
-                    nums.insert(p2, abs(nums[p1]))
-                    p1 += 1
-                    # p2 -= 1
+            resp = []
 
-                elif abs(nums[p1]) > nums[p2]:
-                    nums.insert(p2+1, abs(nums[p1]))
-                    p1 += 1
-                    # p2 -= 1
+            # p1 represents the smallest positive number
+            # p2 represents the largest negative number
+
+            while p1 >= 0 and p2 < len(nums):
+                if abs(nums[p1]) < abs(nums[p2]):
+                    resp.append(nums[p1]*nums[p1])
+                    p1 -= 1
 
                 else:
-                    p2 -= 1
+                    resp.append(nums[p2]*nums[p2])
+                    p2 += 1
 
-            nums = nums[p1:]
+            while p1 >= 0:
+                resp.append(nums[p1]*nums[p1])
+                p1 -= 1
 
-            for i in range(len(nums)):
-                nums[i] = nums[i]**2
-            return nums
+            while p2 < len(nums):
+                resp.append(nums[p2]*nums[p2])
+                p2 += 1
+
+            return resp
+
+
+
+
+
+
 
 if __name__ == '__main__':
     s = Solution()

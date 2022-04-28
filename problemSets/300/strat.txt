@@ -1,0 +1,38 @@
+First up is facebook.
+
+Be able to do all of the top 100
+|--> Top 100 all time
+|--> Top 100 last 6 months
+
+last 6 months first, use a fake profile
+then all time, keep track of what problem you left off at
+
+
+Let's target 5 companies:
+I'd like to be able to do the top 50-100 problems that every company
+is most likely to ask
+
+What companies do I want to target?
+- Facebook (~300k)
+- Google   (~300k)
+- Uber     (~300k)
+- Rubrik   (~300k)
+- AirBnb   (~320k)
+
+It seems like these tech companies usually just ask hards. I
+haven't done many hards yet, however I am getting pretty good
+at doing the mediums. So let's get to the point where we can kill
+fb and then start on the other companies where there are lots of hards
+
+Prep Level 1:
+- 100 top asked fb questions (6months)
+- 100 top asked fb questions (all time)
+- Blind top 75
+
+Prep Level 2:
+- All questions at Rubrik
+- 100 top asked uber questions (6months)
+- 100 top asked uber questions (all time)
+
+Sr:
+400-600k

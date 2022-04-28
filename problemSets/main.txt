@@ -1,0 +1,36 @@
+Ok so once we hit 500 questions,
+start prepping for facebook.
+
+Be able to do the following:
+- binary search
+- deque
+- heap with heapq (create, push, pop)
+- dfs
+- bfs
+- in order
+- pre order
+- post order
+- level order
+- merge sort
+- quick sort
+- next lexigraphical element
+
+./tricks.txt
+./algos.txt
+
+Figure out what this list is
+Write code where you can implement it/have test cases run against it
+Then drill tf out of the question list.
+
+Write code that will randomly pick a question from:
+- blind top 75
+- top 100 liked questions
+- top 100 facebook tagged questions
+
+Remove all repeats.
+
+Once we can implement this stuff easily and get all these questions right
+the first time, then get premium and add on the premium facebook questions.
+
+
+Have a list of tricks that we won't be able to lookup in the interview, practice them

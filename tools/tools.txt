@@ -1,0 +1,10 @@
+heap implementation
+trie implementation
+binary search
+merge sort
+quick sort
+dfs
+bfs
+dp
+next lexicographical element
+Min spanning tree

@@ -3,56 +3,64 @@ https://leetcode.com/list/xyvbjku7/
 
 
 
-https://leetcode.com/problems/valid-parentheses/
-https://leetcode.com/problems/search-in-rotated-sorted-array/
-https://leetcode.com/problems/sudoku-solver/
-https://leetcode.com/problems/powx-n/
-https://leetcode.com/problems/maximum-subarray/
-https://leetcode.com/problems/merge-intervals/
-https://leetcode.com/problems/insert-interval/
-https://leetcode.com/problems/valid-number/
-https://leetcode.com/problems/plus-one/
-https://leetcode.com/problems/add-binary/
-https://leetcode.com/problems/simplify-path/
-https://leetcode.com/problems/minimum-window-substring/
-https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
-https://leetcode.com/problems/merge-sorted-array/
-https://leetcode.com/problems/binary-tree-level-order-traversal/
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
-https://leetcode.com/problems/binary-tree-maximum-path-sum/
-https://leetcode.com/problems/valid-palindrome/
-https://leetcode.com/problems/fraction-to-recurring-decimal/
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
-https://leetcode.com/problems/rotate-array/
-https://leetcode.com/problems/course-schedule/
-https://leetcode.com/problems/design-add-and-search-words-data-structure/
-https://leetcode.com/problems/kth-smallest-element-in-a-bst/
-https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
-https://leetcode.com/problems/product-of-array-except-self/
-https://leetcode.com/problems/binary-tree-paths/
-https://leetcode.com/problems/first-bad-version/
-https://leetcode.com/problems/move-zeroes/
-https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+(DONE) https://leetcode.com/problems/valid-parentheses/
+(DONE) https://leetcode.com/problems/search-in-rotated-sorted-array/
+(REV) https://leetcode.com/problems/powx-n/
+(DONE) https://leetcode.com/problems/maximum-subarray/
+(DONE) https://leetcode.com/problems/merge-intervals/
+(REV) https://leetcode.com/problems/insert-interval/
+(DONE) https://leetcode.com/problems/plus-one/
+(DONE) https://leetcode.com/problems/add-binary/
+(DONE) https://leetcode.com/problems/simplify-path/
+(REV)  https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
+(DONE) https://leetcode.com/problems/merge-sorted-array/
+(DONE) https://leetcode.com/problems/binary-tree-level-order-traversal/
+(DONE) https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+(DONE) https://leetcode.com/problems/valid-palindrome/
+(DONE) https://leetcode.com/problems/range-sum-of-bst/
+(REV) https://leetcode.com/problems/rotate-array/
+(DONE) https://leetcode.com/problems/course-schedule/
+(DONE) https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+(DONE) https://leetcode.com/problems/design-add-and-search-words-data-structure/
+(DONE) https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+(DONE) https://leetcode.com/problems/product-of-array-except-self/
+(DONE) https://leetcode.com/problems/binary-tree-paths/
+(DONE) https://leetcode.com/problems/first-bad-version/
+(DONE) https://leetcode.com/problems/move-zeroes/
+(DONE) https://leetcode.com/problems/insert-delete-getrandom-o1/
+(DONE) https://leetcode.com/problems/add-strings/
+(REV)  https://leetcode.com/problems/partition-equal-subset-sum/
+(REV)  https://leetcode.com/problems/exclusive-time-of-functions/
+(REV)  https://leetcode.com/problems/next-greater-element-i/
+(DONE) https://leetcode.com/problems/find-all-anagrams-in-a-string/
+(REV)  https://leetcode.com/problems/continuous-subarray-sum/
+(DONE) https://leetcode.com/problems/subarray-sum-equals-k/
+(DONE) https://leetcode.com/problems/valid-palindrome-ii/
+(rev)  https://leetcode.com/problems/is-graph-bipartite/
+(DONE) https://leetcode.com/problems/task-scheduler/
+(DONE) https://leetcode.com/problems/custom-sort-string/
+(DONE) https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/
+(DONE https://leetcode.com/problems/k-closest-points-to-origin/
+(REV) https://leetcode.com/problems/shortest-bridge/
+(DONE) https://leetcode.com/problems/verifying-an-alien-dictionary/
+(DONE) https://leetcode.com/problems/interval-list-intersections/
+(DONE) https://leetcode.com/problems/max-consecutive-ones-iii/
+(DONE) https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
+(REV) https://leetcode.com/problems/convert-a-number-to-hexadecimal/
+(DONE) https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
+(DONE) https://leetcode.com/problems/minimum-window-substring/
+(DONE) https://leetcode.com/problems/binary-tree-maximum-path-sum/
+(REV) https://leetcode.com/problems/student-attendance-record-ii/
+
+hards:
 https://leetcode.com/problems/remove-invalid-parentheses/
-https://leetcode.com/problems/longest-increasing-path-in-a-matrix/
-https://leetcode.com/problems/insert-delete-getrandom-o1/
-https://leetcode.com/problems/convert-a-number-to-hexadecimal/
-https://leetcode.com/problems/add-strings/
-https://leetcode.com/problems/partition-equal-subset-sum/
-https://leetcode.com/problems/find-all-anagrams-in-a-string/
-https://leetcode.com/problems/continuous-subarray-sum/
-https://leetcode.com/problems/subarray-sum-equals-k/
-https://leetcode.com/problems/task-scheduler/
-https://leetcode.com/problems/exclusive-time-of-functions/
-https://leetcode.com/problems/valid-palindrome-ii/
-https://leetcode.com/problems/is-graph-bipartite/
-https://leetcode.com/problems/custom-sort-string/
-https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/
-https://leetcode.com/problems/shortest-bridge/
-https://leetcode.com/problems/range-sum-of-bst/
-https://leetcode.com/problems/verifying-an-alien-dictionary/
-https://leetcode.com/problems/k-closest-points-to-origin/
-https://leetcode.com/problems/interval-list-intersections/
-https://leetcode.com/problems/max-consecutive-ones-iii/
-https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
+https://leetcode.com/problems/valid-number/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
+https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+https://leetcode.com/problems/sudoku-solver/
+
+Other hard:
+
+dafuq?
+https://leetcode.com/problems/fraction-to-recurring-decimal/

@@ -9,7 +9,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
-class Solution:
+class Solution_1:
 
     # Iterative
     def pathSum(self, root, sum):
@@ -103,6 +103,76 @@ class Solution:
         itr_rec(root)
 
         return ans[0]
+
+'''
+Given the root of a binary tree and an integer targetSum,
+return the number of paths where the sum of the values along the path equals targetSum.
+
+The path does not need to start or end at the root or a leaf,
+but it must go downwards (i.e., traveling only from parent nodes to child nodes).
+
+So this is just a normal tree, so there's no inherent order between the different nodes
+in the tree.
+
+We are given that the paths can only go downwards.
+
+So get all paths, then start removing the top most node and see how
+many of them end up hitting the target sum.
+
+      10
+     /  \
+    5   -3
+   / \    \
+  3   2   11
+ / \   \
+3  -2   1
+
+targetSum = 8
+
+[10,5,3,3]  | 21 - 10 = 11
+  r     l
+[10,5,3,-2] | 16
+[10,5,2,1]  | 18
+[10,-3,11]  | 18
+
+Do we need to check all of these?
+I think so.
+
+Could we just do this via recursive traversal
+algo? Yes.
+
+Each function call contains a list of sums.
+Every time you hit a node, add the value of the node
+to all of the sums. If any of the sums match the target
+increment the global sum.
+'''
+
+class Solution:
+    def pathSum(self, root, targetSum):
+        self.hits = 0
+
+        def findPaths(node, pathSums):
+            if not node:
+                return
+
+            for idx in range(len(pathSums)):
+                pathSums[idx] += node.val
+
+                if pathSums[idx] == targetSum:
+                    self.hits += 1
+
+            if node.val == targetSum:
+                self.hits += 1
+
+            pathSums.append(node.val)
+
+            findPaths(node.left, list(pathSums))
+            findPaths(node.right, list(pathSums))
+
+
+        findPaths(root, [])
+
+        return self.hits
 
 
 if __name__ == '__main__':

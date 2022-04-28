@@ -13,9 +13,9 @@ Array
 Binary (later? Never?)
 (rev) https://leetcode.com/problems/sum-of-two-integers/ | https://leetcode.com/problems/sum-of-two-integers/discuss/776952/Python-BEST-LeetCode-371-Explanation-for-Python
 (done) https://leetcode.com/problems/number-of-1-bits/
-https://leetcode.com/problems/counting-bits/
-https://leetcode.com/problems/missing-number/
-https://leetcode.com/problems/reverse-bits/
+(done) https://leetcode.com/problems/counting-bits/
+(done) https://leetcode.com/problems/missing-number/
+(rev)  https://leetcode.com/problems/reverse-bits/
 
 Dynamic Programming
 (done) https://leetcode.com/problems/climbing-stairs/
