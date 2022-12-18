@@ -1,10 +1,50 @@
-Ok so once we hit 500 questions,
-start prepping for facebook.
 
-Be able to do the following:
-- binary search
+Maintain familiarity with the following:
+
+Data Structures (can implement all of these):
+- arr
+- linked list
+- heap
+- graph
+- tree
+- trie
+
+Python Libs (can use all of these):
 - deque
-- heap with heapq (create, push, pop)
+  --> init
+  --> appendleft
+  --> pop
+- heapq
+  --> init
+  --> heappush
+  --> pop
+- collections.defaultdict(list)
+  --> can just append without setting things as a list
+- list comprehension
+- set a list to be the union with another list
+  a = set({1,2,3})
+  b = set({2,3,4})
+  a |= b
+  a --> {1,2,3,4}
+- set a list to remove the intersection with another list
+  a = set({1,2,3})
+  b = set({2,3,4})
+  a |= b
+  a --> {1,4}
+- set a list to be the intersection with another list
+  a = set({1,2,3})
+  b = set({2,3,4})
+  a &= b
+  a --> {1,4}
+- sort a list of tuples by the first element:
+  intervals.sort(key=lambda x: x[0])
+- sort a list of tuple by the first two elements:
+  intervals.sort(key=lambda x: (x[0], -x[1]))
+- sort a list of tuple by the first two elements, with reversing the second sort order:
+  intervals.sort(key=lambda x: (x[0], -x[1]))
+
+Algos:
+- binary search
 - dfs
 - bfs
 - in order
@@ -13,7 +53,10 @@ Be able to do the following:
 - level order
 - merge sort
 - quick sort
+- kadane's algorithm, find max subarray sum
+- dijkstra's algo
 - next lexigraphical element
+- nCk math formula
 
 ./tricks.txt
 ./algos.txt

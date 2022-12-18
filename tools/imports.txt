@@ -1,0 +1,15 @@
+Heap:
+import heapq
+heapq.heappop(myList)
+heapq.heappush(myList, element)
+
+LinkedList List obj:
+from collections import deque
+q = deque()
+q.appendleft(term)
+q.pop()
+
+Dict that will act as if every key maps to an empty list:
+from collections import defaultdict
+graph = defaultdict(list)
+graph[i].append(j)

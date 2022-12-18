@@ -41,7 +41,7 @@ Yea store this as a list of strings
 
 Ok so I took the wrong approach. Out of time, come back and revise tomorrow.
 
-Good execution, wrong assumptions.
+Good exec, wrong assumptions.
 
 Next time, test your assumptions in the testcase portion before going through
 full implementation.

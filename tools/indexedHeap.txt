@@ -1,0 +1,10 @@
+https://pypi.org/project/pqdict/0.1/
+from pqdict import PQDict
+
+
+access top element: 0(1)
+pop/insertion log(n)
+
+0(1) lookup for a given key
+log(n) removal of element
+log(n) updating key

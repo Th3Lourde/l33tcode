@@ -1,0 +1,8 @@
+How to get the position of a node in the binary tree:
+https://leetcode.com/problems/maximum-width-of-binary-tree/
+
+if going left:
+pos = pos*2
+
+if going right:
+pos = pos*2 + 1

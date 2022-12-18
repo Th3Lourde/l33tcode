@@ -1,0 +1,16 @@
+fenwick tree
+prefix sum
+segment tree
+
+implement quick sort
+implement merge sort
+implement quick sort
+
+implement binary search
+bisect_left
+bisect_right
+
+heap
+binary_indexed_heap
+
+what does map do --> lets you process and transform all the items in an iterable without using a loop

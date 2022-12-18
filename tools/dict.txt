@@ -1,0 +1,5 @@
+d.pop("keyC", None) # https://stackoverflow.com/questions/5713218/best-method-to-delete-an-item-from-a-dict
+
+
+d.setdefault("foo", "bar") --> sets the key 'foo' to have a value of 'bar'
+if the key 'foo' doesn't already have a value. It it does, nothing occurs

@@ -1,21 +1,20 @@
 class Solution:
     def permuteUnique(self, nums):
-        setOfTuples = set()
+        permutations = set()
 
-        def generatePermutations(perm, opts):
+        def itr(perm, opts):
             if len(opts) == 0:
-                setOfTuples.add(tuple(perm))
-                return
+                permutations.add(tuple(perm))
 
-            for idx in range(len(opts)):
-                generatePermutations(perm+[opts[idx]], opts[:idx]+opts[idx+1:])
+            for idx, opt in enumerate(opts):
+                itr(perm+[opt], opts[:idx]+opts[idx+1:])
 
-        generatePermutations([], nums)
+        itr([], nums)
 
         ans = []
 
-        for t in setOfTuples:
-            ans.append(list(t))
+        for perm in permutations:
+            ans.append(list(perm))
 
         return ans
 

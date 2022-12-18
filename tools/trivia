@@ -1,0 +1,10 @@
+range for lowercase chrs ascii
+range for uppercase chrs ascii
+
+how to convert ascii --> chr:
+ord('a')
+
+how to convert chr --> ascii:
+chr(97)
+
+",".join(a)

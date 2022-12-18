@@ -1,0 +1,21 @@
+
+# Sort list of list by first element
+t.sort(key=lambda x: x[0])
+
+# How to create a difference array in place:
+diffs = [a-b for a,b in zip(gas, cost)]
+
+# How to map [0, 2n) --> [0, n)
+diffs = [a-b for a,b in zip(gas, cost)]
+n = len(diffs)
+cumsum, out = 0, 0
+for i in range(2*n):
+    cumsum += diffs[i%n] <-- this right here
+
+
+# bisect
+If we have a sorted array and an element that we wish to
+add to the array. If we wish to insert on the left of any
+existing entries we would use bisect_left
+
+bisect_right, inserts on the right of any existing entries

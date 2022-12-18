@@ -1,0 +1,6 @@
+Lookup: 0(c)
+Add: ?
+Del: ?
+Intersection: setA & setB | 0(n): https://stackoverflow.com/questions/45648143/how-to-find-intersection-of-2-lists-in-least-time-complexity-in-python-3-5-exclu
+
+Union: setA.union(setB) | 0(n): https://stackoverflow.com/questions/30845469/time-complexity-of-python-set-intersection-for-n-sets
